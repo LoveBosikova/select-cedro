@@ -1,36 +1,41 @@
 @import '../../styles/variables.scss';
 
-.dropdawn {
+.dropdawn__opened {
+    display:  block;
     position: absolute;
     width: 100%;
     max-width: 100%;
     top: 125%;
     left: 0;
-    height: 10vw;
+    height: auto;
+    max-height: 13.2vw;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: $white;
-
-    // &::-webkit-scrollbar-track  {
-    //     background-color: #6969dd;
-    // }
-
-    // &::-webkit-scrollbar-thumb {
-    //     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    //   }
+    border: 1px solid $border-dropdawn;
+    border-radius: $border-radius;
+    box-shadow: 0px 16px 64px $shadow-dropdawn;
+    padding: .3vw;
 
     &::-webkit-scrollbar {
-        // width: .8vw;
-        // // background-color: $grey-scrollbar;
-        background-color: #8070d4;
-        height: 1vw;
-        // opacity: 48%;
-        // border-radius: 4px;
-//         border: 5px solid transparent;
-//   border-radius: 100px;
-// //   background-color: #8070d4;
-//   background-clip: content-box;
+        width: 6px;
+        height: 70%;
     }
 
-    // scroll-behavior: smooth;
+    &::-webkit-scrollbar-track {
+	    background: $white;
+	    border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+	    background: $grey-scrollbar;
+	    border-radius: 5px;
+        height: 3%;
+        max-height: 3%;
+        border: 3px solid transparent;
+    }
+}
+
+.dropdawn__closed {
+    display: none;
 }

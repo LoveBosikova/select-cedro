@@ -1,5 +1,5 @@
 import './App.scss'
-import Select from './components/select/select'
+import SelectBasic from './components/select/selectBasic'
 import Title from './components/title/title'
 
 import { simpleSelectCorrectData } from './mocks/simpleSelectMocks'
@@ -14,19 +14,19 @@ function App() {
           <Title>Select</Title>
             <ul className='select__list'>
               <li className='select__item'>
-                <Select 
+                <SelectBasic 
                 name='Test1' 
                 placeholder='Default one' 
                 items={simpleSelectCorrectData}>
-                </Select>
+                </SelectBasic>
               </li>
               <li className='select__item'>
-                <Select 
+                <SelectBasic 
                 name='Test2' 
                 placeholder='Disabled' 
                 isDisabled={true} 
                 items={simpleSelectCorrectData}>
-                </Select>
+                </SelectBasic>
               </li>
             </ul>
         </section>

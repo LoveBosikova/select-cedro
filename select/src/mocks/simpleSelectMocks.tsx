@@ -13,14 +13,22 @@ export const simpleSelectCorrectData = [
     },
     { 
         id: 4,
-        value: 'List Item' 
+        value: 'Super' 
     },
     { 
         id: 5,
-        value: 'List Item' 
+        value: 'Duper' 
     },
     { 
         id: 6,
         value: 'List Item' 
+    },
+    { 
+        id: 7,
+        value: 'Test' 
+    },
+    { 
+        id: 8,
+        value: 'Item' 
     },
 ]

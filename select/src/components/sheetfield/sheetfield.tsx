@@ -1,15 +1,25 @@
+import { Dispatch, SetStateAction } from 'react';
+
 import style from './sheetfield.module.scss';
 
-import type { ISelectItem } from '../dropdawn/dropdawn';
+interface IPropsSheetField {
+    value: string,
+    setValue: Dispatch<SetStateAction<string>>,
+    setIsFocused: Dispatch<SetStateAction<boolean>>
+}
+function SheetField (props: IPropsSheetField) {
 
-function SheetField (props: ISelectItem) {
+    const { value, setValue, setIsFocused } = props
 
-    const { value } = props
+    const handleClick = () => { 
+        setValue(value); 
+        setIsFocused(false)
+    }; 
 
     if (!value) return null
 
     return (
-        <li className={style.sheetfield}>
+        <li className={style.sheetfield} onClick={handleClick}>
             { value }
         </li>
     )

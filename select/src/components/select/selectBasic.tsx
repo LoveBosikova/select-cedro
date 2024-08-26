@@ -1,5 +1,5 @@
-import { useState, type ReactNode } from 'react'
-import style from './select.module.scss'
+import { useEffect, useState, type ReactNode } from 'react'
+import style from './selectBasic.module.scss'
 import Chevron from '../chevron/chevron';
 
 import type { ISelectItem } from '../dropdawn/dropdawn';
@@ -16,7 +16,9 @@ interface ISelectProps {
     minLength?: number,
     maxLength?: number,
     placeholder?: string | undefined,
-    isMultiple?: boolean
+    isMultiple?: boolean,
+    mode?: undefined | string,
+    children?: ReactNode | ReactNode[] 
 }
 
 // Для создания селекта обязательно нужно указать его имя
@@ -29,21 +31,51 @@ interface ISelectProps {
 
 // TODO: isLoading, isMultiple
 
-function Select (props: ISelectProps) {
+function SelectBasic (props: ISelectProps) {
     const {
         name, 
         items,
-        form,
+        form = undefined,
         customLabel, 
         customDropdawn, 
-        isRequired, 
-        isDisabled,
+        isRequired = false, 
+        isDisabled = false,
         minLength,
-        maxLength,
-        placeholder 
+        maxLength = 100,
+        placeholder = 'Placeholder',
+        children,
+        mode,
+        ...rest
         } = props
-
+    
+    // Значение поисковой строки
     const [ value, setValue ] = useState<string>('')
+    // В фокусе ли селект
+    const [isFocused, setIsFocused] = useState<boolean>(false);
+    // Подходящие значения инпута 
+    const [ currentData, setCurrentData ] = useState<ISelectItem[]>(items);
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        setValue(e.target.value)
+        setCurrentData(items.filter((item: ISelectItem)=> item.value.toLowerCase().includes(value.toLowerCase())))
+    }
+
+    const handleOnFocus = () => { 
+        setIsFocused(true); 
+    }; 
+
+    const handleBlur = () => { 
+        setIsFocused(false); 
+    }; 
+
+    const handleChevron = (state: boolean) => {
+        setIsFocused(!state)
+    }
+
+    useEffect(()=>{
+        setCurrentData(items.filter((item: ISelectItem)=> item.value.toLowerCase().includes(value.toLowerCase())))
+    }, [value])
 
     return (
     
@@ -51,28 +83,35 @@ function Select (props: ISelectProps) {
         {/* TODO вывести в отдельный компонент */}
         {customLabel? customLabel: <label className={style.label} htmlFor={name}></label>}
 
+        {/* По умолчанию показываем обычный селект, если приходит флаг mode, то уже в зависимости от него показываем другие селекты*/}
+        {!mode ? <>
         <input
         type='text'
         id={name}
-        form={form? form : undefined}
+        form={form}
         name={name}
-        placeholder={placeholder? placeholder : 'Placeholder'}
-        required={isRequired? isRequired : false}
-        disabled={!isDisabled ? false : true}
+        placeholder={placeholder}
+        required={isRequired}
+        disabled={isDisabled}
         minLength={minLength? minLength : isRequired? 1: 0}
-        maxLength={maxLength? maxLength : 100}
+        maxLength={maxLength}
         className={style.input}
         value={value}
-        onChange={e => setValue(e.target.value)}
+        onChange={handleInputChange}
+        onFocus={handleOnFocus} 
+        onBlur={handleBlur} 
+        {...rest}
         ></input>
-        <Chevron isActive={isDisabled? false : true}></Chevron>
+        <Chevron isActive={isFocused} onClick={() => handleChevron(isFocused)}></Chevron>
+        </> : <></>}
+
 
         {/* TODO вывести в отдельный компонент */}
         {customDropdawn? customDropdawn :(
-            <Dropdawn items={items}></Dropdawn>
+            <Dropdawn items={currentData} isActive={isFocused} setIsFocused={setIsFocused} setValue={setValue}></Dropdawn>
         )}
     </div>
 
     )
 }
-export default Select
+export default SelectBasic
