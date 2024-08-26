@@ -2,18 +2,20 @@ import { Dispatch, SetStateAction } from 'react';
 
 import style from './sheetfield.module.scss';
 
-import type { ISelectItem } from '../dropdawn/dropdawn';
+import type { ISimpleSelectItem } from '../select/select';
 
 interface IPropsSheetField {
-    value: string,
-    items: ISelectItem[],
-    setValue: Dispatch<SetStateAction<string>>,
+    value: ISimpleSelectItem,
+    items: ISimpleSelectItem[],
+    setValue: Dispatch<SetStateAction<ISimpleSelectItem>>,
     setIsFocused: Dispatch<SetStateAction<boolean>>,
-    setCurrentData: Dispatch<SetStateAction<ISelectItem[]>>
+    setCurrentData: Dispatch<SetStateAction<ISimpleSelectItem[]>>
 }
 function SheetField (props: IPropsSheetField) {
 
     const { value, setValue, setIsFocused, setCurrentData, items } = props
+
+    
 
     const handleClick = () => { 
         setValue(value); 
@@ -25,7 +27,7 @@ function SheetField (props: IPropsSheetField) {
 
     return (
         <li className={style.sheetfield} onClick={handleClick}>
-            { value }
+            { value.value }
         </li>
     )
 }

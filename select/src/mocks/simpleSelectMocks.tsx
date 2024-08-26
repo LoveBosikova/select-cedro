@@ -1,4 +1,6 @@
-export const simpleSelectCorrectData = [
+import { ISimpleSelectItem } from "../components/select/select"
+
+export const simpleSelectCorrectData: ISimpleSelectItem[] = [
     { 
         id: 1,
         value: 'List Item' 

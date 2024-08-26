@@ -2,6 +2,7 @@ import style from './shevron.module.scss'
 
 interface IPropsShevron {
     isActive: boolean,
+    isDisabled: boolean,
     onClick: () => void;
 }
 
@@ -9,7 +10,7 @@ interface IPropsShevron {
 
 function Chevron (props: IPropsShevron) {
 
-    const { isActive, onClick } = props;
+    const { isActive, isDisabled, onClick } = props;
 
     return (
         <svg 
