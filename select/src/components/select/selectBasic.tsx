@@ -94,7 +94,7 @@ function SelectBasic (props: ISelectProps) {
         {customLabel? customLabel: <label className={style.label} htmlFor={name}></label>}
 
         {/* По умолчанию показываем обычный селект, если приходит флаг mode, то уже в зависимости от него показываем другие селекты*/}
-        {!mode ? <>
+        {/* {!mode ? <>
         <input
         type='text'
         id={name}
@@ -113,12 +113,35 @@ function SelectBasic (props: ISelectProps) {
         {...rest}
         ></input>
         <Chevron isActive={isFocused} onClick={() => handleChevron(isFocused)}></Chevron>
-        </> : <></>}
+
+        </> :<></>
+        } */}
+            {
+                switch (mode: string) {
+                    case 'actionsheet':
+                      return <></>
+                    //   break;
+                    case 4:
+                      alert( 'В точку!' );
+                      break;
+                    case 5:
+                      alert( 'Перебор' );
+                      break;
+                    default:
+                      alert( "Нет таких значений" );
+                  }
+            }
 
 
         {/* TODO вывести в отдельный компонент */}
         {customDropdawn? customDropdawn :(
-            <Dropdawn items={currentData} isActive={isFocused} setIsFocused={setIsFocused} setValue={setValue}></Dropdawn>
+            <Dropdawn 
+            items={currentData} 
+            isActive={isFocused} 
+            setIsFocused={setIsFocused} 
+            setValue={setValue}
+            setCurrentData={setCurrentData}>
+            </Dropdawn>
         )}
     </div>
 
