@@ -40,4 +40,37 @@
         border: 1px solid $border-critical;
         box-shadow: 0px 0px 5px $border-critical-shadow;
     }
+
+    &__error {
+    outline:none;
+    max-width: 100%;
+    width: 100%;
+    background-color: $white;
+    border-radius: 8px;
+    padding: 3.3% 5%;
+    will-change: border, box-shadow;
+    transition: all 250ms ease-in;
+
+    &::placeholder {
+        font-family: "Inter", sans-serif;
+        color: $black-placeholder;
+        font-weight: 500;
+        font-size: $font-size-15;
+    }
+
+    &:hover,
+    &:focus {
+        border: 1px solid $border-critical;
+        box-shadow: 0px 0px 5px $border-critical-shadow;
+        will-change: border, box-shadow;
+        transition: all 250ms ease-out;
+    }
+
+    &:disabled {
+        opacity: 10%;
+    }
+
+        border: 1px solid $border-critical;
+        box-shadow: 0px 0px 5px $border-critical-shadow;
+    }
 }

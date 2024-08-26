@@ -51,14 +51,24 @@ function SelectBasic (props: ISelectProps) {
     // Значение поисковой строки
     const [ value, setValue ] = useState<string>('')
     // В фокусе ли селект
-    const [isFocused, setIsFocused] = useState<boolean>(false);
+    const [ isFocused, setIsFocused] = useState<boolean>(false);
+    // В фокусе ли селект
+    const [ isError, setIsError] = useState<boolean>(false);
     // Подходящие значения инпута 
     const [ currentData, setCurrentData ] = useState<ISelectItem[]>(items);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
         setValue(e.target.value)
-        setCurrentData(items.filter((item: ISelectItem)=> item.value.toLowerCase().includes(value.toLowerCase())))
+
+        const newData = items.filter((item: ISelectItem)=> item.value.toLowerCase().includes(value.toLowerCase()))
+        if (newData.length === 0) {
+            setIsError(true)
+            setCurrentData(items)
+        } else if (newData.length > 0) {
+            setIsError(false)
+            setCurrentData(newData)
+        }
     }
 
     const handleOnFocus = () => { 
@@ -95,7 +105,7 @@ function SelectBasic (props: ISelectProps) {
         disabled={isDisabled}
         minLength={minLength? minLength : isRequired? 1: 0}
         maxLength={maxLength}
-        className={style.input}
+        className={isError ? style.input__error : style.input}
         value={value}
         onChange={handleInputChange}
         onFocus={handleOnFocus} 
