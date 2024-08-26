@@ -2,6 +2,8 @@ import './App.scss'
 import Select from './components/select/select'
 import Title from './components/title/title'
 
+import { simpleSelectCorrectData } from './mocks/simpleSelectMocks'
+
 function App() {
   // Страничка для презентации всех видов селекта
 
@@ -12,10 +14,19 @@ function App() {
           <Title>Select</Title>
             <ul className='select__list'>
               <li className='select__item'>
-                <Select name='Test1' placeholder='Default one'></Select>
+                <Select 
+                name='Test1' 
+                placeholder='Default one' 
+                items={simpleSelectCorrectData}>
+                </Select>
               </li>
               <li className='select__item'>
-                <Select name='Test2' placeholder='Disabled' isActive={false}></Select>
+                <Select 
+                name='Test2' 
+                placeholder='Disabled' 
+                isDisabled={true} 
+                items={simpleSelectCorrectData}>
+                </Select>
               </li>
             </ul>
         </section>

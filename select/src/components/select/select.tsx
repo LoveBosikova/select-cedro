@@ -1,11 +1,15 @@
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import style from './select.module.scss'
 import Chevron from '../chevron/chevron';
 
+import type { ISelectItem } from '../dropdawn/dropdawn';
+import Dropdawn from '../dropdawn/dropdawn';
+
 interface ISelectProps {
     name: string,
+    items: ISelectItem[],
     form?: string | undefined,
-    isActive?: boolean,
+    isDisabled?: boolean,
     isRequired?: boolean,
     customDropdawn?: ReactNode,
     customLabel?: ReactNode,
@@ -28,15 +32,18 @@ interface ISelectProps {
 function Select (props: ISelectProps) {
     const {
         name, 
+        items,
         form,
         customLabel, 
         customDropdawn, 
         isRequired, 
-        isActive,
+        isDisabled,
         minLength,
         maxLength,
         placeholder 
-        } = props;
+        } = props
+
+    const [ value, setValue ] = useState<string>('')
 
     return (
     
@@ -51,18 +58,18 @@ function Select (props: ISelectProps) {
         name={name}
         placeholder={placeholder? placeholder : 'Placeholder'}
         required={isRequired? isRequired : false}
-        disabled={isActive? false : true}
+        disabled={!isDisabled ? false : true}
         minLength={minLength? minLength : isRequired? 1: 0}
         maxLength={maxLength? maxLength : 100}
         className={style.input}
+        value={value}
+        onChange={e => setValue(e.target.value)}
         ></input>
-
-        <Chevron isActive={isActive? false : true}></Chevron>
+        <Chevron isActive={isDisabled? false : true}></Chevron>
 
         {/* TODO вывести в отдельный компонент */}
         {customDropdawn? customDropdawn :(
-            <>
-            </>
+            <Dropdawn items={items}></Dropdawn>
         )}
     </div>
 
