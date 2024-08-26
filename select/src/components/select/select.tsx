@@ -42,11 +42,13 @@ function Select (props: ISelectProps) {
     // Подходящие значения инпута 
     const [ currentData, setCurrentData ] = useState<ISimpleSelectItem[]>(items);
 
+    console.log(currentData);
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
         setValue({...value, ...{value: e.target.value}})
 
-        const newData = items.filter((item: ISelectItem)=> item.value.toLowerCase().includes(value.value.toLowerCase()))
+        const newData = items.filter((item: ISimpleSelectItem)=> item.value.toLowerCase().includes(value.value.toLowerCase()))
         if (newData.length === 0) {
             setIsError(true)
             setCurrentData(items)
@@ -76,7 +78,7 @@ function Select (props: ISelectProps) {
 
     useEffect(()=>{
         setCurrentData(items.filter((item: ISimpleSelectItem)=> item.value.toLowerCase().includes(value.value.toLowerCase())))
-    }, [value])
+    }, [value.value])
 
     return (
         <>

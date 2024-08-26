@@ -15,15 +15,13 @@ function SheetField (props: IPropsSheetField) {
 
     const { value, setValue, setIsFocused, setCurrentData, items } = props
 
-    
-
     const handleClick = () => { 
         setValue(value); 
         setIsFocused(false)
         setCurrentData(items)
     }; 
 
-    if (!value) return null
+    if (!value.value) return null
 
     return (
         <li className={style.sheetfield} onClick={handleClick}>

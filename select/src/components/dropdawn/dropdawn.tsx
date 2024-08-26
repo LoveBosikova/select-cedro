@@ -30,7 +30,7 @@ function Dropdawn (props: IPropsDropdawn) {
 
     return (
         <ul className={isActive ? style.dropdawn__opened : style.dropdawn__closed}>
-            {items.map( item => <SheetField key={item.id} value={value} setValue={setValue} setCurrentData={setCurrentData} setIsFocused={setIsFocused} items={items} {...rest}></SheetField>)}
+            {items.map( item => <SheetField key={item.id} value={item} setValue={setValue} setCurrentData={setCurrentData} setIsFocused={setIsFocused} items={items} {...rest}></SheetField>)}
         </ul>
     )
 }
