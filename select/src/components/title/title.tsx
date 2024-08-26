@@ -5,7 +5,6 @@ interface ITitleProps {
 }
 
 function Title (props: ITitleProps) {
-    // const {text} = props;
     return (
         <h2>
             {props.children}

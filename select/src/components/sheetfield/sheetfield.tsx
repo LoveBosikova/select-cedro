@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 import style from './sheetfield.module.scss';
 
@@ -7,13 +7,24 @@ import type { ISimpleSelectItem } from '../select/select';
 interface IPropsSheetField {
     value: ISimpleSelectItem,
     items: ISimpleSelectItem[],
+    isCustomSheetField: boolean,
+    CustomSheetField?: ReactNode | ReactNode[] | null, 
     setValue: Dispatch<SetStateAction<ISimpleSelectItem>>,
     setIsFocused: Dispatch<SetStateAction<boolean>>,
     setCurrentData: Dispatch<SetStateAction<ISimpleSelectItem[]>>
 }
 function SheetField (props: IPropsSheetField) {
 
-    const { value, setValue, setIsFocused, setCurrentData, items } = props
+    const { 
+        value,
+        setValue, 
+        setIsFocused, 
+        setCurrentData, 
+        isCustomSheetField = false, 
+        items, 
+        CustomSheetField = <></>,
+        ...rest
+    } = props
 
     const handleClick = () => { 
         setValue(value); 
@@ -24,9 +35,9 @@ function SheetField (props: IPropsSheetField) {
     if (!value.value) return null
 
     return (
-        <li className={style.sheetfield} onClick={handleClick}>
-            { value.value }
-        </li>
+        <>
+        {isCustomSheetField ? <CustomSheetField {...props}/> : <li className={style.sheetfield} onClick={handleClick}> { value.value }</li>}
+        </>
     )
 }
 

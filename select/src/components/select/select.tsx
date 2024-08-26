@@ -1,10 +1,11 @@
+import React from 'react';
 import Dropdawn from '../dropdawn/dropdawn';
 import Chevron from '../chevron/chevron';
+import { TYPES } from '../../utils/globals';
 
 import { useEffect, useState } from 'react'
 
 import type { ISelectProps } from './selectBasic';
-import { ISelectItem } from '../dropdawn/dropdawn';
 
 import style from './select.module.scss';
 
@@ -19,6 +20,7 @@ export interface ISimpleSelectItem {
 function Select (props: ISelectProps) {
     const {
         name, 
+        type,
         items,
         form = undefined,
         customLabel, 
@@ -30,6 +32,8 @@ function Select (props: ISelectProps) {
         placeholder = 'Placeholder',
         children,
         mode,
+        isCustomSheetField = false,
+        customSheetField,
         ...rest
         } = props
 
@@ -41,8 +45,6 @@ function Select (props: ISelectProps) {
     const [ isError, setIsError] = useState<boolean>(false);
     // Подходящие значения инпута 
     const [ currentData, setCurrentData ] = useState<ISimpleSelectItem[]>(items);
-
-    console.log(currentData);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
@@ -81,7 +83,7 @@ function Select (props: ISelectProps) {
     }, [value.value])
 
     return (
-        <>
+        <React.Fragment>
         <input
             type='text'
             id={name}
@@ -111,10 +113,13 @@ function Select (props: ISelectProps) {
                 isActive={isFocused} 
                 setIsFocused={setIsFocused} 
                 setValue={setValue}
-                setCurrentData={setCurrentData}>
+                setCurrentData={setCurrentData}
+                isCustomSheetField={isCustomSheetField}
+                customSheetField={customSheetField}
+                {...rest}>
             </Dropdawn>
         )}
-        </> 
+        </React.Fragment> 
     )
 }
 

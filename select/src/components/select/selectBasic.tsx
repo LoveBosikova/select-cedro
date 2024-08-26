@@ -1,9 +1,11 @@
-import { type ReactNode } from 'react'
+import { type ReactNode, type ReactElement } from 'react'
 
 import { SELECT, TYPES } from '../../utils/globals';
-import style from './selectBasic.module.scss'
-import { ISimpleSelectItem } from './select';
 
+import { ISimpleSelectItem } from './select';
+import { IActionSheetProps } from '../sheetfield/actionSheet';
+
+import style from './selectBasic.module.scss'
 export interface ISelectProps {
     type?: string | undefined,
     name: string,
@@ -18,10 +20,12 @@ export interface ISelectProps {
     placeholder?: string | undefined,
     isMultiple?: boolean,
     mode?: undefined | string,
+    isCustomSheetField?: boolean,
+    customSheetField?: ReactNode | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element } ,
     children?: ReactNode | ReactNode[] 
 }
 
-// Главное, что нужно сделать при создании селекта - написать его тип -DEFAULT | ACTIONSHEET | MULTISELECT | COMBOBOX
+// Главное, что нужно сделать при создании селекта - написать его тип type = DEFAULT | ACTIONSHEET | MULTISELECT | COMBOBOX
 // В зависимости от этого компонент уже будет требовать причитающиеся ему входные данные
 // Для создания любого селекта обязательно нужно указать его имя
 // Флаг form  связывает отдельно стоящий элемент <input> с формой. По умолчанию не связан ни с какой формой.
@@ -38,6 +42,7 @@ function SelectBasic (props: ISelectProps) {
         type = TYPES.DEFAULT,
         name, 
         customLabel, 
+        ...rest
         } = props
 
         const SelectComponent = SELECT[type].component;
