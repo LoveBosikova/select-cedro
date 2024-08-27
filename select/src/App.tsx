@@ -11,6 +11,7 @@ import { multiSelectCorrectData } from './mocks/multiselectMocks';
 
 import ActionSheet from './components/sheetfield/actionSheet';
 import Multiselect from './components/select/selectMulti';
+import ProfileSheet from './components/sheetfield/profileSheet';
 
 function App() {
   // Страничка для презентации всех видов селекта
@@ -81,7 +82,7 @@ function App() {
               isDisabled={false} 
               items={multiSelectCorrectData}
               isCustomSheetField={true}
-              customSheetField={ActionSheet}
+              customSheetField={ProfileSheet}
               >
             </Multiselect>
           </li>

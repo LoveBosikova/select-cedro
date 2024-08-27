@@ -33,16 +33,11 @@ function Multiselect (props: ISelectProps) {
         ...rest
         } = props
 
-        // console.log(items);
-
     // Значение поисковой строки
     const [ inputValue, setInputValue] = useState<string>('')
 
     // Выбранные значения
-    const [ selectedItems, setSelectedItems ] = useState<ISimpleSelectItem | IMultiSelectData[]>([])
-
-    // Подходящие значения инпута 
-    const [ currentData, setCurrentData ] = useState(items)
+    const [ selectedItems, setSelectedItems ] = useState<IMultiSelectData[]>([])
 
     // В фокусе ли селект
     const [ isFocused, setIsFocused] = useState<boolean>(false)
@@ -62,9 +57,6 @@ function Multiselect (props: ISelectProps) {
     const handleBlur = () => { 
         setIsFocused(false); 
     }; 
-
-    console.log(currentData);
-
 
         return (
             <div className={style.multiselectContainer}>
@@ -96,13 +88,14 @@ function Multiselect (props: ISelectProps) {
                     <Dropdawn 
                         type={type}
                         value={inputValue}
-                        items={currentData} 
+                        items={items} 
                         isActive={true} 
                         setIsFocused={setIsFocused} 
-                        setValue={setInputValue}
-                        setCurrentData={setCurrentData}
+                        setInputValue={setInputValue}
                         isCustomSheetField={isCustomSheetField}
                         CustomSheetField={customSheetField}
+                        selectedItems={selectedItems}
+                        setSelectedItems={setSelectedItems}
                         {...rest}>
                     </Dropdawn>)}
             </div>

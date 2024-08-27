@@ -50,8 +50,41 @@
     max-width: 100%;
     top: 125%;
     left: 0;
-    height: auto;
-    // max-height: 30vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: $white;
+    border: 1px solid $border-dropdawn;
+    border-radius: $border-radius;
+    box-shadow: 0px 16px 64px $shadow-dropdawn;
+    padding: .3vw;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 70%;
+    }
+
+    &::-webkit-scrollbar-track {
+	    background: $white;
+	    border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+	    background: $grey-scrollbar;
+	    border-radius: 5px;
+        height: 3%;
+        max-height: 3%;
+        border: 3px solid transparent;
+    }
+}
+
+.multiselectsheet__opened {
+    display:  block;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    max-width: 100%;
+    top: 125%;
+    left: 0;
     overflow-y: auto;
     overflow-x: hidden;
     background-color: $white;

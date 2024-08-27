@@ -11,6 +11,8 @@ const pickDropDownStyle = (isActive: boolean, type: string) => {
         return style.dropdawn__opened 
     } else if (isActive && type===TYPES.ACTIONSHEET) {
         return style.actionsheet__opened
+    } else if (isActive && type===TYPES.MULTISELECT) {
+        return style.multiselectsheet__opened 
     }
 }
 
