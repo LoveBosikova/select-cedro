@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdawn from '../dropdawn/dropdawn';
 import Chevron from '../chevron/chevron';
-import { TYPES } from '../../utils/globals';
+import { IActionFieldTestData } from '../../mocks/actionSheetMocks';
 
 import { useEffect, useState } from 'react'
 
@@ -38,19 +38,19 @@ function Select (props: ISelectProps) {
         } = props
 
     // Значение поисковой строки
-    const [ value, setValue ] = useState<ISimpleSelectItem>({id: undefined, value: ''})
+    const [ value, setValue ] = useState<ISimpleSelectItem | IActionFieldTestData>({id: undefined, value: ''})
     // В фокусе ли селект
     const [ isFocused, setIsFocused] = useState<boolean>(false);
     // В фокусе ли селект
     const [ isError, setIsError] = useState<boolean>(false);
     // Подходящие значения инпута 
-    const [ currentData, setCurrentData ] = useState<ISimpleSelectItem[]>(items);
+    const [ currentData, setCurrentData ] = useState<ISimpleSelectItem[] | IActionFieldTestData[]>(items);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
         setValue({...value, ...{value: e.target.value}})
 
-        const newData = items.filter((item: ISimpleSelectItem)=> item.value.toLowerCase().includes(value.value.toLowerCase()))
+        const newData = items.filter((item: ISimpleSelectItem | IActionFieldTestData)=> item.value.toLowerCase().includes(value.value.toLowerCase()))
         if (newData.length === 0) {
             setIsError(true)
             setCurrentData(items)
@@ -79,7 +79,7 @@ function Select (props: ISelectProps) {
     }
 
     useEffect(()=>{
-        setCurrentData(items.filter((item: ISimpleSelectItem)=> item.value.toLowerCase().includes(value.value.toLowerCase())))
+        setCurrentData(items.filter((item: ISimpleSelectItem | IActionFieldTestData)=> item.value.toLowerCase().includes(value.value.toLowerCase())))
     }, [value.value])
 
     return (
@@ -108,6 +108,7 @@ function Select (props: ISelectProps) {
         </Chevron>
         {customDropdawn? customDropdawn :(
             <Dropdawn 
+                type={type}
                 value={value}
                 items={currentData} 
                 isActive={isFocused} 
@@ -115,7 +116,7 @@ function Select (props: ISelectProps) {
                 setValue={setValue}
                 setCurrentData={setCurrentData}
                 isCustomSheetField={isCustomSheetField}
-                customSheetField={customSheetField}
+                CustomSheetField={customSheetField}
                 {...rest}>
             </Dropdawn>
         )}

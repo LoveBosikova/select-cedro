@@ -3,16 +3,18 @@ import { Dispatch, ReactNode, SetStateAction } from 'react';
 import style from './sheetfield.module.scss';
 
 import type { ISimpleSelectItem } from '../select/select';
+import { IActionFieldTestData } from '../../mocks/actionSheetMocks';
 
 interface IPropsSheetField {
     value: ISimpleSelectItem,
     items: ISimpleSelectItem[],
     isCustomSheetField: boolean,
     CustomSheetField?: ReactNode | ReactNode[] | null, 
-    setValue: Dispatch<SetStateAction<ISimpleSelectItem>>,
+    setValue: Dispatch<SetStateAction<ISimpleSelectItem | IActionFieldTestData>>,
     setIsFocused: Dispatch<SetStateAction<boolean>>,
     setCurrentData: Dispatch<SetStateAction<ISimpleSelectItem[]>>
 }
+
 function SheetField (props: IPropsSheetField) {
 
     const { 
@@ -36,7 +38,7 @@ function SheetField (props: IPropsSheetField) {
 
     return (
         <>
-        {isCustomSheetField ? <CustomSheetField {...props}/> : <li className={style.sheetfield} onClick={handleClick}> { value.value }</li>}
+        {isCustomSheetField ? <></> : <li className={style.sheetfield} onClick={handleClick}> { value.value }</li>}
         </>
     )
 }

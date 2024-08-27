@@ -1,4 +1,50 @@
+
+@import '../../styles/variables.scss';
+
 .customSheet {
     width: 100%;
     max-width: 100%;
+    font-size: $font-size-15;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.6% 5% 6% 4.9%;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: $sheetfielf-hover;
+    }
+}
+
+.lettersWrap {
+    margin-right: 7%;
+}
+
+.value {
+    font-weight:  500;
+    color: $black;
+}
+
+.type {
+    font-size: $font-size-13;
+    color: $black-placeholder;
+}
+
+.boxWrap {
+
+    &__hidden {
+        margin-left: auto;
+        opacity: 0;
+        will-change: opacity;
+        transition: background-color 150ms ease-in-out;
+    }
+
+    &__visible {
+        margin-left: auto;
+        opacity: 100%;
+        will-change: opacity;
+        transition: background-color 150ms ease-in-out;
+    }
 }

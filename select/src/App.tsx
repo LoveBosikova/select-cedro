@@ -49,7 +49,7 @@ function App() {
               isDisabled={false} 
               items={actionSheetCorrectData}
               isCustomSheetField={true}
-              customSheetField={CUSTOM_ELEMENTS[CUSTOMS.ACTIONSHEET]}
+              customSheetField={ActionSheet}
               >
             </SelectBasic>
           </li>

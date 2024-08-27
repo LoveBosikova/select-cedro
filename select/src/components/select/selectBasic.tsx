@@ -3,7 +3,7 @@ import { type ReactNode, type ReactElement } from 'react'
 import { SELECT, TYPES } from '../../utils/globals';
 
 import { ISimpleSelectItem } from './select';
-import { IActionSheetProps } from '../sheetfield/actionSheet';
+import ActionSheet, { IActionSheetProps } from '../sheetfield/actionSheet';
 
 import style from './selectBasic.module.scss'
 export interface ISelectProps {
@@ -21,7 +21,7 @@ export interface ISelectProps {
     isMultiple?: boolean,
     mode?: undefined | string,
     isCustomSheetField?: boolean,
-    customSheetField?: ReactNode | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element } ,
+    customSheetField?: ReactNode | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element } | any ,
     children?: ReactNode | ReactNode[] 
 }
 
@@ -42,17 +42,19 @@ function SelectBasic (props: ISelectProps) {
         type = TYPES.DEFAULT,
         name, 
         customLabel, 
+        customSheetField,
         ...rest
         } = props
 
         const SelectComponent = SELECT[type].component;
+        // const customActionSheet = ActionSheet;
 
     return (
     
     <div className={style.contentWrap}>
         {/* TODO вывести в отдельный компонент */}
         {customLabel? customLabel: <label className={style.label} htmlFor={name}></label>}
-        <SelectComponent {...props} />
+        <SelectComponent {...props} customSheetField={customSheetField}/>
     </div>
 
     )
