@@ -18,15 +18,6 @@ export interface IActionSheetProps {
     setCurrentData: Dispatch<SetStateAction<IActionFieldTestData[]>>
 }
 
-// item={item}
-//                     key={item.id} 
-//                     value={item} 
-//                     setValue={setValue} 
-//                     setCurrentData={setCurrentData} 
-//                     setIsFocused={setIsFocused} 
-//                     isCustomSheetField={isCustomSheetField}
-//                     items={items} 
-
 function ActionSheet (props: IActionSheetProps) {
 
     const { 
@@ -43,7 +34,12 @@ function ActionSheet (props: IActionSheetProps) {
             setValue(item); 
         }
         setIsFocused(false)
-        setCurrentData(items.map((item : IActionFieldTestData) => item.isActive = (item.id === value?.id) ? true : false ))
+        if (items) {
+            setCurrentData(items.map((item : IActionFieldTestData) => {
+                item.isActive = (item.id === value?.id) ? true : false 
+                return item
+            }))
+        }
     }; 
 
     return (

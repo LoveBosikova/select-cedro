@@ -47,7 +47,6 @@ function SelectBasic (props: ISelectProps) {
         } = props
 
         const SelectComponent = SELECT[type].component;
-        // const customActionSheet = ActionSheet;
 
     return (
     

@@ -53,9 +53,19 @@ function App() {
               >
             </SelectBasic>
           </li>
-
+          <li className='select__item'>
+          <SelectBasic 
+              name='Test3' 
+              type={TYPES.ACTIONSHEET}
+              placeholder='Disabled Action Sheet' 
+              isDisabled={true} 
+              items={actionSheetCorrectData}
+              isCustomSheetField={true}
+              customSheetField={ActionSheet}
+              >
+            </SelectBasic>
+          </li>
         </ul>
-
         </section>
         <section className='select--multi'>
         <Title>Multi select</Title>

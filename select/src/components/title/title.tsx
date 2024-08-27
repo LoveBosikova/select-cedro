@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import style from './title.module.scss'
 
 interface ITitleProps {
     children?: ReactNode
@@ -6,7 +7,7 @@ interface ITitleProps {
 
 function Title (props: ITitleProps) {
     return (
-        <h2>
+        <h2 className={style.title}>
             {props.children}
         </h2>
     )

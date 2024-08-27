@@ -1,10 +1,12 @@
-import style from './dropdawnWrap.module.scss';
+import { TYPES } from '../../utils/globals';
 
 import { IPropsDropdawn } from './dropdawn';
 
+import pickDropDownStyle from '../../utils/pickDropDownStyle';
+
 function DropDownWrap (props: IPropsDropdawn) {
     const { 
-        type,
+        type = TYPES.DEFAULT,
         items,
         value, 
         isActive, 
@@ -16,15 +18,8 @@ function DropDownWrap (props: IPropsDropdawn) {
         children,
         ...rest } = props
 
-        function (isActive, type) {
-            if (!isActive) {
-                return style.dropdawn__closed;
-            }
-            if (isActive && type===)
-        }
-
     return (
-        <ul className={isActive ? style.dropdawn__opened : style.dropdawn__closed}>
+        <ul className={pickDropDownStyle(isActive, type)}>
             {children}
         </ul>
     )

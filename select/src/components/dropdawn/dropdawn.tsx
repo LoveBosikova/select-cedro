@@ -1,4 +1,5 @@
 import SheetField from '../sheetfield/sheetfield';
+import DropDownWrap from './dropdawnWrap';
 
 import { Dispatch, SetStateAction } from 'react';
 
@@ -46,7 +47,7 @@ function Dropdawn (props: IPropsDropdawn) {
     if (!items || items.length === 0) return null
 
     return (
-        <ul className={isActive ? style.dropdawn__opened : style.dropdawn__closed}>
+        <DropDownWrap {...props}>
             {items.map( (item) =>{
                 // Здесь выводим кастомный элемент
                 const ComponentAction = (isCustomSheetField ? CustomSheetField : <></>) as React.ElementType
@@ -76,7 +77,7 @@ function Dropdawn (props: IPropsDropdawn) {
             } 
                 )
                 }
-        </ul>
+        </DropDownWrap>
     )
 }
 
