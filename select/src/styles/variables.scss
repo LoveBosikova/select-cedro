@@ -18,13 +18,18 @@ $sheetfielf-hover: rgb(19, 8, 23, .05);
 
 $shadow-dropdawn: rgb(22, 8, 30, .08);
 
+$violet: #6E328C;
+$violet-backround: rgb(110, 50, 140, .06);
+$black-background:rgb(19, 8, 23, .03);
 
+$text-disabled: rgb(19, 8, 23, .4);
 
 // borders
 
 $border-radius: 1px;
 
 // fonts
+$font-size-12: 0.833vw;
 $font-size-13: 0.933vw;
 $font-size-15: 1.15vw;
 $font-size-60: 4vw;
@@ -32,7 +37,6 @@ $font-size-60: 4vw;
 
 // $font-size-26: 1.806vw;
 // $font-size-8: 0.612vw;
-// $font-size-12: 0.833vw;
 // $font-size-14: 0.972vw;
 // $font-size-16: 1.111vw;
 // $font-size-18: 1.25vw;

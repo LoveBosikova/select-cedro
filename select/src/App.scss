@@ -20,3 +20,12 @@
   max-width: 26.5%;
   margin-bottom: 5vw;
 }
+
+.multiselect__item {
+  text-decoration: none;
+  list-style-type: none;
+  margin-bottom: 5vw;
+  width: 26.5%;
+  max-width: 44vw;
+  min-width: fit-content;
+}

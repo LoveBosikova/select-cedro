@@ -3,15 +3,16 @@
 .multiselectContainer {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     position: relative;
     outline:none;
-    max-width: 100%;
-    width: 100%;
+    max-width: 44vw;
+    min-width: 24vw;
+    width: auto;
     background-color: $white;
     border-radius: 8px;
     border: 1px solid $black-border;
-    padding: 3.3% 5%;
+    padding: 0.8vw 0.5vw;
     will-change: border, box-shadow;
     transition: all 250ms ease-in;
     z-index: 1;
@@ -30,6 +31,7 @@
     border: none;
     width: 7vw;
     max-width: 100%;
+    margin-top: auto;
     // min-width: max-content;
     &::placeholder {
         font-family: "Inter", sans-serif;
@@ -37,4 +39,16 @@
         font-weight: 500;
         font-size: $font-size-15;
     }
+}
+
+.chosenItems {
+    width: auto;
+    max-width: 44vw;
+    min-width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.searchIconWrap {
+    margin-right: 0.3vw;
 }

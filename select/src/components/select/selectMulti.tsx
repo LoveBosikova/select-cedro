@@ -2,7 +2,7 @@ import { ISelectProps } from './selectBasic';
 
 import searchIcon from '../../assets/icon-search.png';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 
 import Chevron from '../chevron/chevron';
@@ -11,7 +11,8 @@ import Dropdawn from '../dropdawn/dropdawn';
 import type { IMultiSelectData } from '../../mocks/multiselectMocks';
 
 import style from './selectMulti.module.scss'
-import { ISimpleSelectItem } from './select';
+// import { ISimpleSelectItem } from './select';
+import ProfileBar from '../profileBar/profileBar';
 
 function Multiselect (props: ISelectProps) {
     const {
@@ -58,14 +59,18 @@ function Multiselect (props: ISelectProps) {
         setIsFocused(false); 
     }; 
 
+    useEffect(()=> {
+        console.log(`selections updated:`, selectedItems);
+
+    }, [selectedItems])
+
+
         return (
             <div className={style.multiselectContainer}>
-                <picture>
-                    <img src={searchIcon} alt='Search Icon' />
-                </picture>
+                {selectedItems.length > 0 ? <></> : <picture className={style.searchIconWrap}><img src={searchIcon} alt='Search Icon' /></picture>}
                 {/* Контейнер для выбранных позиций */}
                 <ul className={style.chosenItems}>
-
+                    {selectedItems.length > 0 ? selectedItems.map((item) => <ProfileBar key={item.id} item={item}></ProfileBar>) : <></>}
                 </ul>
                 <input
                     type='text'

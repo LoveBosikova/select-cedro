@@ -1,11 +1,12 @@
 import { IMultiSelectData } from '../../mocks/multiselectMocks';
 import style from './profileSheet.module.scss';
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import IconBox from '../../assets/icon-box.png';
+import IconBoxDisabled from '../../assets/icon-box-disabled.png'
 import { ISimpleSelectItem } from '../select/select';
 
 export interface IMultiSelectSheetProps {
-    item?: IMultiSelectData,
+    item: IMultiSelectData,
     items?: IMultiSelectData[],
     isCustomSheetField?: boolean, 
     value?: string,
@@ -29,30 +30,34 @@ function ProfileSheet (props: IMultiSelectSheetProps) {
         setSelectedItems
     } = props; 
 
+    const [ isDisabled , setIsDisabled ] = useState(false);
+
     function handleClick () {
-        if (item) {
-            setInputValue(''); 
-            console.log(selectedItems, item);
-            // const newSelectedItems = selectedItems?.push(item)
-            setSelectedItems(selectedItems.push(item))
-        }
+        selectedItems.push(item)
+        setSelectedItems(selectedItems)
         setIsFocused(false)
+        setInputValue(''); 
+        setIsDisabled(selectedItems.map((i) => i.id).includes(item.id))
     }
+
+    console.log(isDisabled);
 
     return (
         <React.Fragment>
-        <li className={style.customSheet} onClick={handleClick}>
-            <picture className={style.lettersWrap}>
+        <li className={style.customSheet}>
+            <button className={style.btn} onClick={handleClick} disabled={isDisabled}>
+            <picture className={isDisabled? style.lettersWrap__disabled : style.lettersWrap}>
                 <img className={style.letters} src={item?.src} alt={item?.value} />
             </picture>
             <div className={style.textWrap}>
-                <h3 className={style.value}>{item?.value}</h3>
+                <h3 className={isDisabled? style.value__disabled : style.value}>{item?.value}</h3>
                 <p className={style.email}>{item?.email}</p>
             </div>
-            {/* <picture className={(item?.id === value?.id && item?.value === value?.value) ? style.boxWrap__visible : style.boxWrap__hidden}> */}
             <picture className={style.boxWrap}>
-                <img className={style.box} src={IconBox} alt='Icon Box' />
+                <img className={style.box} src={isDisabled? IconBoxDisabled : IconBox} alt='Icon Box' />
             </picture>
+
+            </button>
         </li>
         </React.Fragment>
         )

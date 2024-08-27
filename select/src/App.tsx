@@ -12,6 +12,7 @@ import { multiSelectCorrectData } from './mocks/multiselectMocks';
 import ActionSheet from './components/sheetfield/actionSheet';
 import Multiselect from './components/select/selectMulti';
 import ProfileSheet from './components/sheetfield/profileSheet';
+import ProfileBar from './components/profileBar/profileBar';
 
 function App() {
   // Страничка для презентации всех видов селекта
@@ -74,7 +75,7 @@ function App() {
         <section className='select--multi'>
         <Title>Multi select</Title>
         <ul className='select__list'>
-          <li className='select__item'>
+          <li className='multiselect__item'>
             <Multiselect 
               name='Test3' 
               type={TYPES.MULTISELECT}
@@ -85,18 +86,6 @@ function App() {
               customSheetField={ProfileSheet}
               >
             </Multiselect>
-          </li>
-          <li className='select__item'>
-          {/* <SelectBasic 
-              name='Test3' 
-              type={TYPES.ACTIONSHEET}
-              placeholder='Disabled Action Sheet' 
-              isDisabled={true} 
-              items={actionSheetCorrectData}
-              isCustomSheetField={true}
-              customSheetField={ActionSheet}
-              >
-            </SelectBasic> */}
           </li>
         </ul>
         </section>
