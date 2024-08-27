@@ -3,13 +3,15 @@ import { type ReactNode, type ReactElement } from 'react'
 import { SELECT, TYPES } from '../../utils/globals';
 
 import { ISimpleSelectItem } from './select';
-import ActionSheet, { IActionSheetProps } from '../sheetfield/actionSheet';
+import { IActionSheetProps } from '../sheetfield/actionSheet';
+
+import type { IMultiSelectData } from '../../mocks/multiselectMocks';
 
 import style from './selectBasic.module.scss'
 export interface ISelectProps {
     type?: string | undefined,
     name: string,
-    items: ISimpleSelectItem[],
+    items: ISimpleSelectItem[] | IMultiSelectData[],
     form?: string | undefined,
     isDisabled?: boolean,
     isRequired?: boolean,
@@ -36,6 +38,8 @@ export interface ISelectProps {
 
 
 // TODO: isLoading, isMultiple
+
+// Этот компонент-обёртка, его ответственность - распределить функционал и в зависимости от передаваемого мода type отдать нужный компонент селекта
 
 function SelectBasic (props: ISelectProps) {
     const {

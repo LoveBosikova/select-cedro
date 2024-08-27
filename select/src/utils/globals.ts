@@ -1,4 +1,5 @@
 import Select from "../components/select/select";
+import Multiselect from "../components/select/selectMulti";
 import ActionSheet from "../components/sheetfield/actionSheet";
 
 export const TYPES = {
@@ -17,10 +18,10 @@ export const SELECT = {
         key: TYPES.ACTIONSHEET,
         component:  Select, 
     },
-    // [TYPES.MULTISELECT]: {
-    //     key: TYPES.MULTISELECT,
-    //     component:  Select,
-    // }
+    [TYPES.MULTISELECT]: {
+        key: TYPES.MULTISELECT,
+        component:  Multiselect,
+    }
 }
 
 export const CUSTOMS = {

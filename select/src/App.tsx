@@ -7,7 +7,10 @@ import { TYPES, CUSTOMS, CUSTOM_ELEMENTS } from './utils/globals';
 
 import { simpleSelectCorrectData } from './mocks/simpleSelectMocks';
 import { actionSheetCorrectData } from './mocks/actionSheetMocks';
+import { multiSelectCorrectData } from './mocks/multiselectMocks';
+
 import ActionSheet from './components/sheetfield/actionSheet';
+import Multiselect from './components/select/selectMulti';
 
 function App() {
   // Страничка для презентации всех видов селекта
@@ -69,6 +72,32 @@ function App() {
         </section>
         <section className='select--multi'>
         <Title>Multi select</Title>
+        <ul className='select__list'>
+          <li className='select__item'>
+            <Multiselect 
+              name='Test3' 
+              type={TYPES.MULTISELECT}
+              placeholder='Action Sheet' 
+              isDisabled={false} 
+              items={multiSelectCorrectData}
+              isCustomSheetField={true}
+              customSheetField={ActionSheet}
+              >
+            </Multiselect>
+          </li>
+          <li className='select__item'>
+          {/* <SelectBasic 
+              name='Test3' 
+              type={TYPES.ACTIONSHEET}
+              placeholder='Disabled Action Sheet' 
+              isDisabled={true} 
+              items={actionSheetCorrectData}
+              isCustomSheetField={true}
+              customSheetField={ActionSheet}
+              >
+            </SelectBasic> */}
+          </li>
+        </ul>
         </section>
         <section className='select--combobox'>
         <Title>Combobox</Title>

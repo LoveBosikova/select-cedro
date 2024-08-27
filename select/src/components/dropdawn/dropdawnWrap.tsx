@@ -18,6 +18,8 @@ function DropDownWrap (props: IPropsDropdawn) {
         children,
         ...rest } = props
 
+        console.log(isActive);
+
     return (
         <ul className={pickDropDownStyle(isActive, type)}>
             {children}

@@ -4,13 +4,14 @@ import style from './sheetfield.module.scss';
 
 import type { ISimpleSelectItem } from '../select/select';
 import { IActionFieldTestData } from '../../mocks/actionSheetMocks';
+import { IMultiSelectData } from '../../mocks/multiselectMocks';
 
 interface IPropsSheetField {
     value: ISimpleSelectItem,
     items: ISimpleSelectItem[],
     isCustomSheetField: boolean,
     CustomSheetField?: ReactNode | ReactNode[] | null, 
-    setValue: Dispatch<SetStateAction<ISimpleSelectItem | IActionFieldTestData>>,
+    setValue: Dispatch<SetStateAction<ISimpleSelectItem | IActionFieldTestData | IMultiSelectData[]>>,
     setIsFocused: Dispatch<SetStateAction<boolean>>,
     setCurrentData: Dispatch<SetStateAction<ISimpleSelectItem[]>>
 }
