@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import type { ISelectProps } from './selectBasic';
 
 import style from './select.module.scss';
+import { IMultiSelectData } from '../../mocks/multiselectMocks';
 
 // На вход простого селекта с единичным выбором ожидается такой объект, при желании легко расширить под любые нужды,
 // Возвращает ту же структуру данных в переменной value
@@ -36,9 +37,9 @@ function Select (props: ISelectProps) {
         customSheetField,
         ...rest
         } = props
-
+'Dispatch<SetStateAction<ISimpleSelectItem | SetStateAction<string> | IMultiSelectData[]>>
     // Значение поисковой строки
-    const [ value, setValue ] = useState<ISimpleSelectItem | IActionFieldTestData>({id: undefined, value: ''})
+    const [ value, setValue ] = useState<ISimpleSelectItem | IActionFieldTestData | IMultiSelectData[]>({id: undefined, value: ''})
     // В фокусе ли селект
     const [ isFocused, setIsFocused] = useState<boolean>(false);
     // В фокусе ли селект

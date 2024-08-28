@@ -15,7 +15,8 @@ export interface IMultiSelectSheetProps {
     setIsFocused: Dispatch<SetStateAction<boolean>>,
     selectedItems?: IMultiSelectData[],
     setSelectedItems: React.Dispatch<React.SetStateAction<IMultiSelectData[]>>,
-    isPadding: boolean
+    isPadding: boolean,
+    inputValue: string
 }
 
 function ProfileSheet (props: IMultiSelectSheetProps) {
@@ -24,23 +25,23 @@ function ProfileSheet (props: IMultiSelectSheetProps) {
         item,
         items,
         value,
+        inputValue,
         setInputValue, 
         setIsFocused, 
         selectedItems = [],
         setSelectedItems
     } = props; 
 
+    if (!item.value.includes(inputValue)) return <></>
+
     const [ isDisabled , setIsDisabled ] = useState(false);
 
     function handleClick () {
-        selectedItems.push(item)
-        setSelectedItems(selectedItems)
-        setIsFocused(false)
+        setSelectedItems([...selectedItems, item])
         setInputValue(''); 
         setIsDisabled(selectedItems.map((i) => i.id).includes(item.id))
+        // setIsFocused(false)
     }
-
-    console.log(isDisabled);
 
     return (
         <React.Fragment>
@@ -56,7 +57,6 @@ function ProfileSheet (props: IMultiSelectSheetProps) {
             <picture className={style.boxWrap}>
                 <img className={style.box} src={isDisabled? IconBoxDisabled : IconBox} alt='Icon Box' />
             </picture>
-
             </button>
         </li>
         </React.Fragment>

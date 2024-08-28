@@ -17,7 +17,6 @@ import ProfileBar from './components/profileBar/profileBar';
 function App() {
   // Страничка для презентации всех видов селекта
 
-
   return (
     <main className='main'>
       <div className='contentWrap'>

@@ -11,7 +11,7 @@ interface IPropsSheetField {
     items: ISimpleSelectItem[],
     isCustomSheetField: boolean,
     CustomSheetField?: ReactNode | ReactNode[] | null, 
-    setValue: Dispatch<SetStateAction<ISimpleSelectItem | IActionFieldTestData | IMultiSelectData[]>>,
+    setValue: Dispatch<SetStateAction<ISimpleSelectItem | SetStateAction<string> | IMultiSelectData[]>>,
     setIsFocused: Dispatch<SetStateAction<boolean>>,
     setCurrentData: Dispatch<SetStateAction<ISimpleSelectItem[]>>
 }

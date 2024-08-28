@@ -55,22 +55,25 @@ function Multiselect (props: ISelectProps) {
         setIsFocused(true); 
     }; 
 
+    const handleIsFocus = () => {
+        setIsFocused(true); 
+
+    }
+
     const handleBlur = () => { 
         setIsFocused(false); 
     }; 
 
     useEffect(()=> {
         console.log(`selections updated:`, selectedItems);
-
     }, [selectedItems])
 
-
         return (
-            <div className={style.multiselectContainer}>
+            <div className={style.multiselectContainer} onClick={handleIsFocus}>
                 {selectedItems.length > 0 ? <></> : <picture className={style.searchIconWrap}><img src={searchIcon} alt='Search Icon' /></picture>}
                 {/* Контейнер для выбранных позиций */}
                 <ul className={style.chosenItems}>
-                    {selectedItems.length > 0 ? selectedItems.map((item) => <ProfileBar key={item.id} item={item}></ProfileBar>) : <></>}
+                    {selectedItems.length > 0 ? selectedItems.map((item) => <ProfileBar key={item.id} item={item} selectedItems={selectedItems} setSelectedItems={setSelectedItems}></ProfileBar>) : <></>}
                 </ul>
                 <input
                     type='text'
@@ -94,8 +97,9 @@ function Multiselect (props: ISelectProps) {
                         type={type}
                         value={inputValue}
                         items={items} 
-                        isActive={true} 
+                        isActive={isFocused} 
                         setIsFocused={setIsFocused} 
+                        inputValue={inputValue}
                         setInputValue={setInputValue}
                         isCustomSheetField={isCustomSheetField}
                         CustomSheetField={customSheetField}

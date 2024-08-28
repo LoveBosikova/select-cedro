@@ -23,13 +23,14 @@ export interface IPropsDropdawn {
     items: ISimpleSelectItem[],
     isActive: boolean,
     isCustomSheetField?: boolean,
-    setValue?: Dispatch<SetStateAction<ISimpleSelectItem | IMultiSelectData[] | SetStateAction<string>>>,
+    setValue: Dispatch<SetStateAction<ISimpleSelectItem | IMultiSelectData[] | SetStateAction<string>>>,
     setInputValue?: Dispatch<SetStateAction<string>>,
     setIsFocused: Dispatch<SetStateAction<boolean>>,
     setCurrentData: Dispatch<SetStateAction<ISimpleSelectItem[]>>,
     CustomSheetField?: ReactNode | React.Component | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element },
     children?: ReactNode | ReactNode[],
     selectedItems?: IMultiSelectData[], 
+    inputValue?: string
 }
 
 function Dropdawn (props: IPropsDropdawn) {
@@ -44,6 +45,7 @@ function Dropdawn (props: IPropsDropdawn) {
         setCurrentData,
         isCustomSheetField = false,
         CustomSheetField,
+        inputValue = '',
         ...rest } = props
 
     if (!items || items.length === 0) return null
@@ -66,6 +68,7 @@ function Dropdawn (props: IPropsDropdawn) {
                     setIsFocused={setIsFocused} 
                     isCustomSheetField={isCustomSheetField}
                     items={items} 
+                    inputValue={inputValue}
                     {...rest}/> 
                     : 
                     <SheetField
