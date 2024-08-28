@@ -13,6 +13,8 @@ import ActionSheet from './components/sheetfield/actionSheet';
 import Multiselect from './components/select/selectMulti';
 import ProfileSheet from './components/sheetfield/profileSheet';
 import ProfileBar from './components/profileBar/profileBar';
+import Combobox from './components/select/selectCombobox';
+import ComboboxSheet from './components/sheetfield/comboboxSheet';
 
 function App() {
   // Страничка для презентации всех видов селекта
@@ -59,7 +61,7 @@ function App() {
           </li>
           <li className='select__item'>
           <SelectBasic 
-              name='Test3' 
+              name='Test4' 
               type={TYPES.ACTIONSHEET}
               placeholder='Disabled Action Sheet' 
               isDisabled={true} 
@@ -76,7 +78,7 @@ function App() {
         <ul className='select__list'>
           <li className='multiselect__item'>
             <Multiselect 
-              name='Test3' 
+              name='Test5' 
               type={TYPES.MULTISELECT}
               placeholder='Action Sheet' 
               isDisabled={false} 
@@ -90,6 +92,20 @@ function App() {
         </section>
         <section className='select--combobox'>
         <Title>Combobox</Title>
+        <ul className='select__list'>
+          <li className='combobox__item'>
+            <Combobox
+            name='Test5' 
+            type={TYPES.COMBOBOX}
+            placeholder='Выберите одну или несколько категорий' 
+            isDisabled={false} 
+            items={simpleSelectCorrectData}
+            isCustomSheetField={true}
+            customSheetField={ComboboxSheet}
+            >
+            </Combobox>
+          </li>
+        </ul>
         </section>
       </div>
     </main>

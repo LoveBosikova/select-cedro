@@ -5,10 +5,10 @@
     flex-direction: row;
     flex-wrap: nowrap;
     position: relative;
-    outline:none;
-    max-width: 44vw;
-    min-width: 24vw;
+    outline: none;
+    min-width: 35vw;
     width: auto;
+    max-width: max-content;
     background-color: $white;
     border-radius: 8px;
     border: 1px solid $black-border;
@@ -29,7 +29,8 @@
 .input {
     outline:none;
     border: none;
-    width: 7vw;
+    width: 70%;
+    min-width: 30%;
     max-width: 100%;
     margin-top: auto;
     &::placeholder {
@@ -42,12 +43,51 @@
 
 .chosenItems {
     width: auto;
-    max-width: 44vw;
-    min-width: fit-content;
+    max-width: 34vw;
     display: flex;
     flex-wrap: wrap;
 }
 
 .searchIconWrap {
     margin-right: 0.3vw;
+}
+
+.addItem {
+    display:  block;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    max-width: 100%;
+    top: 125%;
+    left: 0;
+    height: auto;
+    max-height: 13.2vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: $white;
+    border: 1px solid $border-dropdawn;
+    border-radius: $border-radius;
+    box-shadow: 0px 16px 64px $shadow-dropdawn;
+    padding: .3vw;
+}
+
+.addBtn {
+    width: 100%;
+    display: flex;
+    background-color: $white;
+    outline: none;
+    border: none;
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
+}
+
+.plusWrap {
+    margin-right: 1vw;
+}
+
+.addText {
+    text-overflow: ellipsis;
 }

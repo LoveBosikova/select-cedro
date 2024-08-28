@@ -1,4 +1,5 @@
 import Select from "../components/select/select";
+import Combobox from "../components/select/selectCombobox";
 import Multiselect from "../components/select/selectMulti";
 import ActionSheet from "../components/sheetfield/actionSheet";
 
@@ -21,6 +22,10 @@ export const SELECT = {
     [TYPES.MULTISELECT]: {
         key: TYPES.MULTISELECT,
         component:  Multiselect,
+    },
+    [TYPES.COMBOBOX]: {
+        key: TYPES.COMBOBOX,
+        component:  Combobox,
     }
 }
 

@@ -7,13 +7,14 @@ import { IActionFieldTestData } from '../../mocks/actionSheetMocks';
 import IconBox from '../../assets/icon-box.png';
 
 import style from './actionSheet.module.scss';
+import { IMultiSelectData } from '../../mocks/multiselectMocks';
 
 export interface IActionSheetProps {
     item?: IActionFieldTestData,
     items?: IActionFieldTestData[],
     isCustomSheetField?: boolean, 
     value?: IActionFieldTestData,
-    setValue: Dispatch<SetStateAction<ISimpleSelectItem | IActionFieldTestData>>,
+    setValue: Dispatch<SetStateAction<ISimpleSelectItem | IMultiSelectData[] | SetStateAction<string>>>,
     setIsFocused: Dispatch<SetStateAction<boolean>>,
     setCurrentData: Dispatch<SetStateAction<IActionFieldTestData[]>>
 }

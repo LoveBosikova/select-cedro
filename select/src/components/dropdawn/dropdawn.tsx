@@ -11,6 +11,7 @@ import { type ReactNode, type ReactElement } from 'react'
 import { IMultiSelectData } from '../../mocks/multiselectMocks';
 
 import style from './dropdawn.module.scss';
+import { IActionFieldTestData } from '../../mocks/actionSheetMocks';
 
 export interface ISelectItem {
     id: number,
@@ -23,10 +24,12 @@ export interface IPropsDropdawn {
     items: ISimpleSelectItem[],
     isActive: boolean,
     isCustomSheetField?: boolean,
-    setValue: Dispatch<SetStateAction<ISimpleSelectItem | IMultiSelectData[] | SetStateAction<string>>>,
+    // Dispatch<SetStateAction<ISimpleSelectItem | IMultiSelectData[] | IActionFieldTestData>>
+    setValue: Dispatch<SetStateAction<ISimpleSelectItem | IMultiSelectData[] | SetStateAction<string> | IActionFieldTestData>>,
     setInputValue?: Dispatch<SetStateAction<string>>,
     setIsFocused: Dispatch<SetStateAction<boolean>>,
     setCurrentData: Dispatch<SetStateAction<ISimpleSelectItem[]>>,
+    setSelectedItems?: React.Dispatch<React.SetStateAction<IMultiSelectData[]>>, 
     CustomSheetField?: ReactNode | React.Component | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element },
     children?: ReactNode | ReactNode[],
     selectedItems?: IMultiSelectData[], 

@@ -9,6 +9,10 @@
   font-style: normal;
 }
 
+body {
+  margin-bottom: 30vw;
+}
+
 .select__list {
   margin-top: 2vw;
 
@@ -28,4 +32,13 @@
   width: 26.5%;
   max-width: 44vw;
   min-width: fit-content;
+}
+
+.combobox__item {
+    text-decoration: none;
+    list-style-type: none;
+    max-width: 60%;
+    min-width: auto;
+    margin-bottom: 5vw;
+    padding-bottom: 30vw;
 }

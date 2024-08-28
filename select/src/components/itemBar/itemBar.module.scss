@@ -2,23 +2,18 @@
 
 .barWrap {
     display: flex;
+    width: 20%;
     min-width: fit-content;
-    width: 30%;
     max-width: fit-content;
     flex-wrap: nowrap;
     justify-content: start;
     align-items: center;
     background-color: $violet-backround;
-    padding: 0 0.3vw;
-    padding-bottom: 0.3vw;
+    padding: 0 0.2vw;
     border-radius: $border-radius;
     margin: 0.2vw;
 }
 
-.imgWrap {
-    width: 2vw;
-    min-width: 2vw;
-}
 
 .closeWrap {
     width: 1vw;
@@ -27,12 +22,11 @@
 }
 
 .name {
-    text-overflow: ellipsis;
     font-size: $font-size-12;
+    text-overflow: ellipsis;
     color: $violet;
     white-space: nowrap;
-    margin-right: 5%;
+    margin-right: .45vw;
     text-align: center;
     align-self: center;
-    margin-top: 0.3vw;
 }

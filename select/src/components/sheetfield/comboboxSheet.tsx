@@ -1,9 +1,6 @@
 import { IMultiSelectData } from '../../mocks/multiselectMocks';
-import style from './profileSheet.module.scss';
+import style from './comboboxSheet.module.scss';
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import IconBox from '../../assets/icon-box.png';
-import IconBoxDisabled from '../../assets/icon-box-disabled.png'
-import { ISimpleSelectItem } from '../select/select';
 
 export interface IMultiSelectSheetProps {
     item: IMultiSelectData,
@@ -19,7 +16,7 @@ export interface IMultiSelectSheetProps {
     inputValue: string
 }
 
-function ProfileSheet (props: IMultiSelectSheetProps) {
+function ComboboxSheet (props: IMultiSelectSheetProps) {
 
     const { 
         item,
@@ -50,20 +47,13 @@ function ProfileSheet (props: IMultiSelectSheetProps) {
         <React.Fragment>
         <li className={style.customSheet}>
             <button className={style.btn} onClick={handleClick} disabled={isDisabled}>
-            <picture className={isDisabled? style.lettersWrap__disabled : style.lettersWrap}>
-                <img className={style.letters} src={item?.src} alt={item?.value} />
-            </picture>
             <div className={style.textWrap}>
                 <h3 className={isDisabled? style.value__disabled : style.value}>{item?.value}</h3>
-                <p className={style.email}>{item?.email}</p>
             </div>
-            <picture className={style.boxWrap}>
-                <img className={style.box} src={isDisabled? IconBoxDisabled : IconBox} alt='Icon Box' />
-            </picture>
             </button>
         </li>
         </React.Fragment>
         )
 }
 
-export default ProfileSheet
+export default ComboboxSheet

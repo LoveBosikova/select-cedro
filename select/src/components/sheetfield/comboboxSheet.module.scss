@@ -1,0 +1,108 @@
+@import '../../styles/variables.scss';
+
+.customSheet {
+    width: 100%;
+    max-width: 100%;
+    font-size: $font-size-15;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: $sheetfielf-hover;
+    }
+}
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    padding: 0.6% 5% 6% 4.9%;
+    outline: none;
+    border: none;
+    transition: background-color 200ms ease-in;
+
+    &:hover, &:active {
+        outline: none;
+        border: none;
+        background-color: $black-background;
+        transition: background-color 200ms ease-in;
+    }
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
+
+    &:disabled {
+        cursor: auto;
+    }
+}
+
+.lettersWrap {
+    width: 13%;
+    max-width: 13%;
+    height: 100%;
+    max-height: 100%;
+    margin-right: 10%;
+}
+
+.lettersWrap__disabled {
+    width: 13%;
+    max-width: 13%;
+    height: 100%;
+    max-height: 100%;
+    margin-right: 10%;
+    opacity: 64%;
+}
+
+.letters {
+    width: 100%;
+    max-width: 100%;
+}
+
+.value {
+    font-weight:  600;
+    color: $black;
+}
+
+.value__disabled {
+    width: 100%;
+    max-width: 100%;
+    color: $text-disabled;
+}
+
+.email {
+    color: $black-placeholder;
+    font-size: $font-size-13;
+}
+
+.type {
+    font-size: $font-size-13;
+    color: $black-placeholder;
+}
+
+.boxWrap {
+
+    margin-left: auto;
+    width: 13%;
+    max-width: 13%;
+    height: 100%;
+    max-height: 100%;
+
+    &__hidden {
+        margin-left: auto;
+        opacity: 0;
+        will-change: opacity;
+        transition: background-color 150ms ease-in-out;
+    }
+
+    &__visible {
+        margin-left: auto;
+        opacity: 100%;
+        will-change: opacity;
+        transition: background-color 150ms ease-in-out;
+    }
+}

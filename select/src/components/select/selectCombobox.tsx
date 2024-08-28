@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { ISelectProps } from './selectBasic';
 
-import searchIcon from '../../assets/icon-search.png';
 import Dropdawn from '../dropdawn/dropdawn';
-import ProfileBar from '../profileBar/profileBar';
+import ItemBar from '../itemBar/itemBar';
+
+import AddIcon from '../../assets/icon-plus.png'
 
 import type { IMultiSelectData } from '../../mocks/multiselectMocks';
 
-import style from './selectMulti.module.scss'
+import style from './selectCombobox.module.scss'
 
-function Multiselect (props: ISelectProps) {
+function Combobox (props: ISelectProps) {
     const {
         name, 
         type,
@@ -52,7 +53,6 @@ function Multiselect (props: ISelectProps) {
 
     const handleIsFocus = () => {
         setIsFocused(true); 
-
     }
 
     const handleBlur = () => { 
@@ -65,10 +65,8 @@ function Multiselect (props: ISelectProps) {
 
         return (
             <div className={style.multiselectContainer} onClick={handleIsFocus}>
-                {selectedItems.length > 0 ? <></> : <picture className={style.searchIconWrap}><img src={searchIcon} alt='Search Icon' /></picture>}
-                {/* Контейнер для выбранных позиций */}
                 <ul className={style.chosenItems}>
-                    {selectedItems.length > 0 ? selectedItems.map((item) => <ProfileBar key={item.id} item={item} selectedItems={selectedItems} setSelectedItems={setSelectedItems}></ProfileBar>) : <></>}
+                    {selectedItems.length > 0 ? selectedItems.map((item) => <ItemBar key={item.id} item={item} selectedItems={selectedItems} setSelectedItems={setSelectedItems}></ItemBar>) : <></>}
                 </ul>
                 <input
                     type='text'
@@ -102,8 +100,18 @@ function Multiselect (props: ISelectProps) {
                         setSelectedItems={setSelectedItems}
                         {...rest}>
                     </Dropdawn>)}
+
+                    {isError ? <div className={style.addItem}>
+                        <button className={style.addBtn}>
+                            <picture className={style.plusWrap}>
+                                <img src={AddIcon} alt='Plus Icon' tabIndex={0}/>
+                            </picture>
+                            <p className={style.addText}>Создать «{inputValue}»</p>
+                        </button>
+                    </div> : <></>}
+
             </div>
         )
 }
 
-export default Multiselect
+export default Combobox
