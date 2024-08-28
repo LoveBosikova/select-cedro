@@ -39,9 +39,13 @@ function ProfileSheet (props: IMultiSelectSheetProps) {
     function handleClick () {
         setSelectedItems([...selectedItems, item])
         setInputValue(''); 
-        setIsDisabled(selectedItems.map((i) => i.id).includes(item.id))
-        // setIsFocused(false)
+        setIsDisabled(!isDisabled)
     }
+
+    useEffect(()=> {
+        if (selectedItems.find(el => el.id === item.id)) setIsDisabled(true);
+        else setIsDisabled(false)
+    }, [selectedItems])
 
     return (
         <React.Fragment>

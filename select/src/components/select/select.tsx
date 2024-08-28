@@ -37,7 +37,7 @@ function Select (props: ISelectProps) {
         customSheetField,
         ...rest
         } = props
-'Dispatch<SetStateAction<ISimpleSelectItem | SetStateAction<string> | IMultiSelectData[]>>
+
     // Значение поисковой строки
     const [ value, setValue ] = useState<ISimpleSelectItem | IActionFieldTestData | IMultiSelectData[]>({id: undefined, value: ''})
     // В фокусе ли селект
