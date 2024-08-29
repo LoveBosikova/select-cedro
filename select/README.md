@@ -51,7 +51,7 @@ export interface ISimpleSelectItem {
 В зависимости от этого компонент уже будет требовать причитающиеся ему входные данные.
 
 # Простой Select 
-![Активный селект и disabled](/public/select.png)
+![Активный селект и disabled](/src/assets/select.png)
 
 Чтобы сделать селект неактиынм, нужно передать флаг isDisabled={true} 
 
