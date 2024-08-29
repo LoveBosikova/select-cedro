@@ -103,8 +103,6 @@ function Combobox (props: ISelectProps) {
                     className={style.input}
                     value={inputValue}
                     onChange={handleInputChange}
-                    onFocus={handleOnFocus} 
-                    onBlur={handleBlur} 
                     {...rest}
                 ></input>
                 {customDropdawn? customDropdawn :(

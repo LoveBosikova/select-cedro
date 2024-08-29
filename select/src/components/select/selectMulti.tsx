@@ -89,8 +89,6 @@ function Multiselect (props: ISelectProps) {
                     className={isError ? style.input__error : style.input}
                     value={inputValue}
                     onChange={handleInputChange}
-                    onFocus={handleOnFocus} 
-                    onBlur={handleBlur} 
                     {...rest}
                 ></input>
                 {customDropdawn? customDropdawn :(
