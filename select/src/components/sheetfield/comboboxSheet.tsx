@@ -22,7 +22,6 @@ function ComboboxSheet (props: IMultiSelectSheetProps) {
         item,
         inputValue,
         setInputValue, 
-        setIsFocused, 
         selectedItems = [],
         setSelectedItems
     } = props; 

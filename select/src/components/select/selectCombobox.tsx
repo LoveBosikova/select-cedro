@@ -85,7 +85,6 @@ function Combobox (props: ISelectProps) {
 
     const ComponentTab = (isCustomTabs ? customTab : <></>) as React.ElementType
 
-
         return (
             <div className={style.multiselectContainer} onClick={handleIsFocus}>
                 <ul className={style.chosenItems}>

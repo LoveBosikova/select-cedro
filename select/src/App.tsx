@@ -16,6 +16,7 @@ import ProfileBar from './components/profileBar/profileBar';
 import Combobox from './components/select/selectCombobox';
 import ComboboxSheet from './components/sheetfield/comboboxSheet';
 import CustomSimpleBar from './components/customSimpleBar/customSimpleBar';
+import CustomProfileBar from './components/customProfileBar.tsx/customProfileBar';
 
 function App() {
   // Страничка для презентации всех видов селекта
@@ -89,6 +90,20 @@ function App() {
               >
             </Multiselect>
           </li>
+          <li className='multiselect__item'>
+            <Multiselect 
+              name='Test6' 
+              type={TYPES.MULTISELECT}
+              placeholder='Placeholder' 
+              isDisabled={false} 
+              items={multiSelectCorrectData}
+              isCustomSheetField={true}
+              customSheetField={ProfileSheet}
+              isCustomTabs={true}
+              customTab={CustomProfileBar}
+              >
+            </Multiselect>
+          </li>
         </ul>
         </section>
         <section className='select--combobox'>
@@ -96,7 +111,7 @@ function App() {
         <ul className='select__list'>
           <li className='combobox__item'>
             <Combobox
-            name='Test5' 
+            name='Test7' 
             type={TYPES.COMBOBOX}
             placeholder='Выберите одну или несколько категорий' 
             isDisabled={false} 
@@ -108,7 +123,7 @@ function App() {
           </li>
           <li className='combobox__item'>
             <Combobox
-            name='Test6' 
+            name='Test8' 
             type={TYPES.COMBOBOX}
             placeholder='Выберите одну или несколько категорий' 
             isDisabled={false} 

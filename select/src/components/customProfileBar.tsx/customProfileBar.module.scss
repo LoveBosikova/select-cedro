@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+
+.barWrap {
+    display: flex;
+    min-width: fit-content;
+    width: 40%;
+    max-width: fit-content;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-items: center;
+    background-color: $white;
+    padding: 0.3vw 0.5vw;
+    padding-bottom: 0.3vw;
+    border-radius: $border-radius;
+    border: 1px solid $border-focus;
+    margin: 0.2vw;
+}
+
+.imgWrap {
+    width: 2vw;
+    min-width: 2vw;
+}
+
+.closeWrap {
+    width: 1vw;
+    min-width: 1vw;
+    cursor: pointer;
+}
+
+.name {
+    text-overflow: ellipsis;
+    font-size: $font-size-12;
+    color: $violet;
+    white-space: nowrap;
+    margin-right: 5%;
+    text-align: center;
+    align-self: center;
+    margin-top: 0.3vw;
+}

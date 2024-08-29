@@ -23,9 +23,10 @@ function Multiselect (props: ISelectProps) {
         maxLength = 100,
         placeholder = 'Placeholder',
         children,
-        mode,
         isCustomSheetField = false,
         customSheetField,
+        isCustomTabs = false,
+        customTab,
         ...rest
         } = props
 
@@ -64,12 +65,16 @@ function Multiselect (props: ISelectProps) {
         setIsFocused(false); 
     }, [selectedItems])
 
+    // Определяем кастомный таб
+    const ComponentTab = (isCustomTabs ? customTab : <></>) as React.ElementType
+
         return (
             <div className={style.multiselectContainer} onClick={handleIsFocus}>
                 {selectedItems.length > 0 ? <></> : <picture className={style.searchIconWrap}><img src={searchIcon} alt='Search Icon' /></picture>}
                 {/* Контейнер для выбранных позиций */}
                 <ul className={style.chosenItems}>
-                    {selectedItems.length > 0 ? selectedItems.map((item) => <ProfileBar key={item.id} item={item} selectedItems={selectedItems} setSelectedItems={setSelectedItems}></ProfileBar>) : <></>}
+                    {/* Если передан, то выводим кастомный таб, если нет - дефолтный */}
+                    {selectedItems.length > 0 ? selectedItems.map((item) => isCustomTabs ? <ComponentTab key={item.id} item={item} selectedItems={selectedItems} setSelectedItems={setSelectedItems} {...rest}></ComponentTab> : <ProfileBar key={item.id} item={item} selectedItems={selectedItems} setSelectedItems={setSelectedItems}></ProfileBar>) : <></>}
                 </ul>
                 <input
                     type='text'
