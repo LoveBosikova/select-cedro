@@ -15,7 +15,6 @@
     padding: 0.8vw 0.8vw;
     will-change: border, box-shadow;
     transition: all 250ms ease-in;
-    z-index: 1;
 
     &:hover,
     &:focus {
@@ -29,7 +28,7 @@
 .input {
     outline:none;
     border: none;
-    width: 7vw;
+    width: 8vw;
     max-width: 100%;
     margin-top: auto;
     &::placeholder {

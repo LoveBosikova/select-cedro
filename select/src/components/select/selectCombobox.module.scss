@@ -15,7 +15,6 @@
     padding: 0.8vw 1.1vw;
     will-change: border, box-shadow;
     transition: all 250ms ease-in;
-    z-index: 1;
 
     &:hover,
     &:focus {
@@ -27,9 +26,10 @@
 }
 
 .input {
+    text-overflow: ellipsis;
     outline:none;
     border: none;
-    width: 70%;
+    width: 90%;
     min-width: 30%;
     max-width: 100%;
     margin-top: auto;

@@ -81,7 +81,7 @@ function Select (props: ISelectProps) {
 
     useEffect(()=>{
         setCurrentData(items.filter((item: ISimpleSelectItem | IActionFieldTestData)=> item.value.toLowerCase().includes(value.value.toLowerCase())))
-    }, [value.value])
+    }, [value])
 
     return (
         <React.Fragment>

@@ -29,7 +29,7 @@ function App() {
                 <SelectBasic 
                 type={TYPES.DEFAULT}
                 name='Test1' 
-                placeholder='Default one' 
+                placeholder='Placeholder' 
                 items={simpleSelectCorrectData}>
                 </SelectBasic>
               </li>
@@ -37,7 +37,7 @@ function App() {
                 <SelectBasic 
                 name='Test2' 
                 type={TYPES.DEFAULT}
-                placeholder='Disabled' 
+                placeholder='Placeholder' 
                 isDisabled={true} 
                 items={simpleSelectCorrectData}>
                 </SelectBasic>
@@ -51,7 +51,7 @@ function App() {
             <SelectBasic 
               name='Test3' 
               type={TYPES.ACTIONSHEET}
-              placeholder='Action Sheet' 
+              placeholder='Placeholder' 
               isDisabled={false} 
               items={actionSheetCorrectData}
               isCustomSheetField={true}
@@ -63,7 +63,7 @@ function App() {
           <SelectBasic 
               name='Test4' 
               type={TYPES.ACTIONSHEET}
-              placeholder='Disabled Action Sheet' 
+              placeholder='Placeholder' 
               isDisabled={true} 
               items={actionSheetCorrectData}
               isCustomSheetField={true}
@@ -80,7 +80,7 @@ function App() {
             <Multiselect 
               name='Test5' 
               type={TYPES.MULTISELECT}
-              placeholder='Action Sheet' 
+              placeholder='Placeholder' 
               isDisabled={false} 
               items={multiSelectCorrectData}
               isCustomSheetField={true}
