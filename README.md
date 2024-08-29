@@ -53,7 +53,7 @@ export interface ISimpleSelectItem {
 
 ## Простой Select 
 
-<image src="./src/assets/select.png" alt="Активный селект и disabled">
+<image src="./select/src/assets/select.png" alt="Активный селект и disabled">
 
 Чтобы сделать селект неактиынм, нужно передать флаг isDisabled={true} 
 
@@ -73,7 +73,7 @@ export interface ISimpleSelectItem {
   customSheetField={ActionSheet}
 >
 ```
-<image src="./src/assets/actionsheet.png" alt="Активный селект и disabled">
+<image src="./select/src/assets/actionsheet.png" alt="Активный селект и disabled">
 
 ## Multi select
 
@@ -96,7 +96,7 @@ export interface ISimpleSelectItem {
 Флаг isWithPadding отвечает за наличие отстуах в списке дропдауна. Он не обязателей, по дефолту он в значении false,
 то есть отступов нет.
 
-<image src="./src/assets/multiselect.png" alt="Дефолтный мультиселект">
+<image src="./select/src/assets/multiselect.png" alt="Дефолтный мультиселект">
 
 # Кастомизация элементов 
 
@@ -123,5 +123,5 @@ export interface ISimpleSelectItem {
 </Combobox>
 ```
 
-<image src="./src/assets/custom.png" alt="Пример мультиселекта с кастомным дропдауном и кастомным табом">
+<image src="./select/src/assets/custom.png" alt="Пример мультиселекта с кастомным дропдауном и кастомным табом">
 
