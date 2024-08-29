@@ -13,7 +13,7 @@
 
 ### npm run dev 
 
-<image src="./src/assets/pageView.png" alt="Как выглядит демонстрация компонента">
+<image src="./select/src/assets/pageView.png" alt="Как выглядит демонстрация компонента">
 
 ### Ну, а теперь - технические аспекты
 
@@ -24,11 +24,11 @@
 
 ```
 <SelectBasic 
-                type={TYPES.DEFAULT}
-                name='Test1' 
-                placeholder='Placeholder' 
-                items={simpleSelectCorrectData}>
-                </SelectBasic>
+  type={TYPES.DEFAULT}
+  name='Test1' 
+  placeholder='Placeholder' 
+  items={simpleSelectCorrectData}>
+  </SelectBasic>
 ```
 Пример самого простого компонента.
 
