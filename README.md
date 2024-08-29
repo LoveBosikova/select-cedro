@@ -48,7 +48,7 @@ export interface ISimpleSelectItem {
 Какой же тип селекта нужно будет рендерить, решается в компоненте SelectBasic. Типы перечислены в Map-у в файле globals.ts. 
 Всё это дело при желании легко расширяется новыми типами селекта.
 
-Главное, что нужно сделать при создании селекта - написать его тип type = DEFAULT | ACTIONSHEET | MULTISELECT | COMBOBOX
+Главное, что нужно сделать при создании селекта - написать его тип: type = DEFAULT | ACTIONSHEET | MULTISELECT | COMBOBOX
 В зависимости от этого компонент уже будет требовать причитающиеся ему входные данные.
 
 ## Простой Select 
@@ -77,11 +77,10 @@ export interface ISimpleSelectItem {
 
 ## Multi select
 
-Реализован как отдельный компонент Multiselect.
 Как это выглядит во внешнем коде:
 
 ```
-<Multiselect 
+<SelectBasic 
   name='Test5' 
   type={TYPES.MULTISELECT}
   placeholder='Placeholder' 
@@ -90,10 +89,10 @@ export interface ISimpleSelectItem {
   isCustomSheetField={true}
   customSheetField={ProfileSheet}
   isWithPadding={false}>
-</Multiselect>
+</SelectBasic>
 ```
 
-Флаг isWithPadding отвечает за наличие отстуах в списке дропдауна. Он не обязателей, по дефолту он в значении false,
+Флаг isWithPadding отвечает за наличие отступов в списке дропдауна. Он не обязателей, по дефолту он в значении false,
 то есть отступов нет.
 
 <image src="./select/src/assets/multiselect.png" alt="Дефолтный мультиселект">
@@ -109,7 +108,7 @@ export interface ISimpleSelectItem {
 Вот пример мультиселекта с кастомным дропдауном и с кастомным табом:
 
 ```
-<Combobox
+<SelectBasic
   name='Test8' 
   type={TYPES.COMBOBOX}
   placeholder='Выберите одну или несколько категорий' 
@@ -120,7 +119,7 @@ export interface ISimpleSelectItem {
   isCustomTabs={true}
   customTab={CustomSimpleBar}
   >
-</Combobox>
+</SelectBasic>
 ```
 
 <image src="./select/src/assets/custom.png" alt="Пример мультиселекта с кастомным дропдауном и кастомным табом">

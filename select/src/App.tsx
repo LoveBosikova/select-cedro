@@ -9,6 +9,7 @@ import { simpleSelectCorrectData } from './mocks/simpleSelectMocks';
 import { actionSheetCorrectData } from './mocks/actionSheetMocks';
 import { multiSelectCorrectData } from './mocks/multiselectMocks';
 
+// import SelectBasic from './components/select/selectBasic';
 import ActionSheet from './components/sheetfield/actionSheet';
 import Multiselect from './components/select/selectMulti';
 import ProfileSheet from './components/sheetfield/profileSheet';
@@ -79,7 +80,7 @@ function App() {
         <Title>Multi select</Title>
         <ul className='select__list'>
           <li className='multiselect__item'>
-            <Multiselect 
+            <SelectBasic 
               name='Test5' 
               type={TYPES.MULTISELECT}
               placeholder='Placeholder' 
@@ -89,10 +90,10 @@ function App() {
               customSheetField={ProfileSheet}
               isWithPadding={false}
               >
-            </Multiselect>
+            </SelectBasic>
           </li>
           <li className='multiselect__item'>
-            <Multiselect 
+            <SelectBasic 
               name='Test5' 
               type={TYPES.MULTISELECT}
               placeholder='Placeholder' 
@@ -102,10 +103,10 @@ function App() {
               customSheetField={ProfileSheet}
               isWithPadding={true}
               >
-            </Multiselect>
+            </SelectBasic>
           </li>
           <li className='multiselect__item'>
-            <Multiselect 
+            <SelectBasic 
               name='Test6' 
               type={TYPES.MULTISELECT}
               placeholder='Placeholder' 
@@ -116,7 +117,7 @@ function App() {
               isCustomTabs={true}
               customTab={CustomProfileBar}
               >
-            </Multiselect>
+            </SelectBasic>
           </li>
         </ul>
         </section>
@@ -124,7 +125,7 @@ function App() {
         <Title>Combobox</Title>
         <ul className='select__list'>
           <li className='combobox__item'>
-            <Combobox
+            <SelectBasic
             name='Test7' 
             type={TYPES.COMBOBOX}
             placeholder='Выберите одну или несколько категорий' 
@@ -133,10 +134,10 @@ function App() {
             isCustomSheetField={true}
             customSheetField={ComboboxSheet}
             >
-            </Combobox>
+            </SelectBasic>
           </li>
           <li className='combobox__item'>
-            <Combobox
+            <SelectBasic
             name='Test8' 
             type={TYPES.COMBOBOX}
             placeholder='Выберите одну или несколько категорий' 
@@ -147,7 +148,7 @@ function App() {
             isCustomTabs={true}
             customTab={CustomSimpleBar}
             >
-            </Combobox>
+            </SelectBasic>
           </li>
         </ul>
         </section>
