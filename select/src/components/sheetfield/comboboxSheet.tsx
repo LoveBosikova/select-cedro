@@ -31,7 +31,8 @@ function ComboboxSheet (props: IMultiSelectSheetProps) {
     const [ isDisabled , setIsDisabled ] = useState(false);
 
     function handleClick () {
-        setSelectedItems([...selectedItems, item])
+        if (!selectedItems.find(el => el.id === item.id)) setSelectedItems([...selectedItems, item])
+        else setSelectedItems(selectedItems.filter((el) => el.id !== item.id))
         setInputValue(''); 
         setIsDisabled(!isDisabled)
     }
@@ -43,7 +44,7 @@ function ComboboxSheet (props: IMultiSelectSheetProps) {
 
     return (
         <li className={style.customSheet} onClick={handleClick}>
-            <button className={style.btn} disabled={isDisabled}>
+            <button className={style.btn}>
             <div className={style.textWrap}>
                 <h3 className={isDisabled? style.value__disabled : style.value}>{item?.value}</h3>
             </div>
