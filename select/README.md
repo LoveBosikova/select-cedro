@@ -12,7 +12,7 @@
 
 ## npm run dev 
 
-![Как выглядит демонстрация компонента](/public/pageView.png)
+![Как выглядит демонстрация компонента](/select-cedro/select/public/pageView.png)
 
 ## Ну, а теперь - технические аспекты
 
@@ -51,7 +51,7 @@ export interface ISimpleSelectItem {
 В зависимости от этого компонент уже будет требовать причитающиеся ему входные данные.
 
 # Простой Select 
-![Активный селект и disabled](/src/assets/select.png)
+![Активный селект и disabled](/select-cedro/select/src/assets/select.png)
 
 Чтобы сделать селект неактиынм, нужно передать флаг isDisabled={true} 
 
@@ -71,7 +71,7 @@ export interface ISimpleSelectItem {
   customSheetField={ActionSheet}
 >
 ```
-![Активный селект и disabled](/public/actionsheet.png)
+![Активный селект и disabled](/select-cedro/select/public/actionsheet.png)
 
 # Multi select
 
@@ -94,7 +94,7 @@ export interface ISimpleSelectItem {
 Флаг isWithPadding отвечает за наличие отстуах в списке дропдауна. Он не обязателей, по дефолту он в значении false,
 то есть отступов нет.
 
-![Дефолтный мультиселект](/public/multiselect.png)
+![Дефолтный мультиселект](/select-cedro/select/public/multiselect.png)
 
 ## Кастомизация элементов 
 
@@ -120,4 +120,4 @@ export interface ISimpleSelectItem {
   >
 </Combobox>
 ```
-![Пример мультиселекта с кастомным дропдауном и кастомным табом](/public/custom.png)
+![Пример мультиселекта с кастомным дропдауном и кастомным табом](/select-cedro/select/public/custom.png)
