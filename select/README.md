@@ -1,21 +1,21 @@
 # React + TypeScript + Vite
  
 
-### Чтобы запустить локально: 
-## git clone https://github.com/LoveBosikova/select-cedro.git
+# Чтобы запустить локально: 
 
-## cd select-cedro
+### git clone https://github.com/LoveBosikova/select-cedro.git
 
-## cd select
+### cd select-cedro
 
-## npm i
+### cd select
 
-## npm run dev 
+### npm i
 
-<image src="./src/assets/select.png" alt="Текст с описанием картинки">
-![Как выглядит демонстрация компонента](/select-cedro/select/public/pageView.png)
+### npm run dev 
 
-## Ну, а теперь - технические аспекты
+<image src="./src/assets/pageView.png" alt="Как выглядит демонстрация компонента">
+
+### Ну, а теперь - технические аспекты
 
 # Основное 
 
@@ -51,12 +51,13 @@ export interface ISimpleSelectItem {
 Главное, что нужно сделать при создании селекта - написать его тип type = DEFAULT | ACTIONSHEET | MULTISELECT | COMBOBOX
 В зависимости от этого компонент уже будет требовать причитающиеся ему входные данные.
 
-# Простой Select 
-![Активный селект и disabled](/select-cedro/select/src/assets/select.png)
+## Простой Select 
+
+<image src="./src/assets/select.png" alt="Активный селект и disabled">
 
 Чтобы сделать селект неактиынм, нужно передать флаг isDisabled={true} 
 
-# Action sheet 
+## Action sheet 
 
 Из-за схожего функционала реализован как частный случай простого селекта. 
 Код дефолтного actionSheet-а
@@ -72,9 +73,9 @@ export interface ISimpleSelectItem {
   customSheetField={ActionSheet}
 >
 ```
-![Активный селект и disabled](/select-cedro/select/public/actionsheet.png)
+<image src="./src/assets/actionsheet.png" alt="Активный селект и disabled">
 
-# Multi select
+## Multi select
 
 Реализован как отдельный компонент Multiselect.
 Как это выглядит во внешнем коде:
@@ -95,9 +96,9 @@ export interface ISimpleSelectItem {
 Флаг isWithPadding отвечает за наличие отстуах в списке дропдауна. Он не обязателей, по дефолту он в значении false,
 то есть отступов нет.
 
-![Дефолтный мультиселект](/select-cedro/select/public/multiselect.png)
+<image src="./src/assets/multiselect.png" alt="Дефолтный мультиселект">
 
-## Кастомизация элементов 
+# Кастомизация элементов 
 
 Кастомизация элемента дропдауна и таба("бара") происходит по одинаковому принципу -
 нужный для отображения компонент передается через пропсу.
@@ -121,4 +122,6 @@ export interface ISimpleSelectItem {
   >
 </Combobox>
 ```
-![Пример мультиселекта с кастомным дропдауном и кастомным табом](/select-cedro/select/public/custom.png)
+
+<image src="./src/assets/custom.png" alt="Пример мультиселекта с кастомным дропдауном и кастомным табом">
+
