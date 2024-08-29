@@ -1,50 +1,123 @@
 # React + TypeScript + Vite
+ 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Чтобы запустить локально: 
+## git clone https://github.com/LoveBosikova/select-cedro.git
 
-Currently, two official plugins are available:
+## cd select-cedro
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## cd select
 
-## Expanding the ESLint configuration
+## npm i
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## npm run dev 
 
-- Configure the top-level `parserOptions` property like this:
+![Как выглядит демонстрация компонента](/public/pageView.png)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Ну, а теперь - технические аспекты
+
+# Основное 
+
+Весь компонент реальзован на функциональных компонентах. 
+Без каких-либо флагов в props все внутренние элементы будут дефолтные. 
+
+```
+<SelectBasic 
+                type={TYPES.DEFAULT}
+                name='Test1' 
+                placeholder='Placeholder' 
+                items={simpleSelectCorrectData}>
+                </SelectBasic>
+```
+Пример самого простого компонента.
+
+На вход простого селекта с единичным выбором ожидается такой объект, при желании легко расширить под любые нужды:
+
+```
+export interface ISimpleSelectItem {
+    id: number | undefined,
+    value: string
+}
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Любой тип селекта возвращает ту же структуру данных в переменной value.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+# Типизация селектов
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Какой же тип селекта нужно будет рендерить, решается в компоненте SelectBasic. Типы перечислены в Map-у в файле globals.ts. 
+Всё это дело при желании легко расширяется новыми типами селекта.
+
+Главное, что нужно сделать при создании селекта - написать его тип type = DEFAULT | ACTIONSHEET | MULTISELECT | COMBOBOX
+В зависимости от этого компонент уже будет требовать причитающиеся ему входные данные.
+
+# Простой Select 
+![Активный селект и disabled](/public/select.png)
+
+Чтобы сделать селект неактиынм, нужно передать флаг isDisabled={true} 
+
+# Action sheet 
+
+Из-за схожего функционала реализован как частный случай простого селекта. 
+Код дефолтного actionSheet-а
+
 ```
+<SelectBasic 
+  name='Test3' 
+  type={TYPES.ACTIONSHEET}
+  placeholder='Placeholder' 
+  isDisabled={false} 
+  items={actionSheetCorrectData}
+  isCustomSheetField={true}
+  customSheetField={ActionSheet}
+>
+```
+![Активный селект и disabled](/public/actionsheet.png)
+
+# Multi select
+
+Реализован как отдельный компонент Multiselect.
+Как это выглядит во внешнем коде:
+
+```
+<Multiselect 
+  name='Test5' 
+  type={TYPES.MULTISELECT}
+  placeholder='Placeholder' 
+  isDisabled={false} 
+  items={multiSelectCorrectData}
+  isCustomSheetField={true}
+  customSheetField={ProfileSheet}
+  isWithPadding={false}>
+</Multiselect>
+```
+
+Флаг isWithPadding отвечает за наличие отстуах в списке дропдауна. Он не обязателей, по дефолту он в значении false,
+то есть отступов нет.
+
+![Дефолтный мультиселект](/public/multiselect.png)
+
+## Кастомизация элементов 
+
+Кастомизация элемента дропдауна и таба("бара") происходит по одинаковому принципу -
+нужный для отображения компонент передается через пропсу.
+
+Например, хотим кастомную плашку дропдауна - передаем любую в пропс customSheetField и ставим флаг isCustomSheetField={true}.
+Хотим кастомный таб - передаем нужный компонент таба в пропс customTab и ставим флаг isCustomTabs={true}.
+
+Вот пример мультиселекта с кастомным дропдауном и с кастомным табом:
+
+```
+<Combobox
+  name='Test8' 
+  type={TYPES.COMBOBOX}
+  placeholder='Выберите одну или несколько категорий' 
+  isDisabled={false} 
+  items={simpleSelectCorrectData}
+  isCustomSheetField={true}
+  customSheetField={ComboboxSheet}
+  isCustomTabs={true}
+  customTab={CustomSimpleBar}
+  >
+</Combobox>
+```
+![Пример мультиселекта с кастомным дропдауном и кастомным табом](/public/custom.png)

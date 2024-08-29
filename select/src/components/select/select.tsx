@@ -64,17 +64,9 @@ function Select (props: ISelectProps) {
         }
     }
 
-    const handleOnFocus = () => { 
-        setIsFocused(true); 
-    }; 
-
-    const handleBlur = () => { 
-        setIsFocused(false); 
-    }; 
-
-    const handleChevron = (state: boolean) => {
-        if (!isDisabled) {
-            setIsFocused(!state)
+    const handleChevron = () => {
+        if(!isDisabled) {
+            setIsFocused(!isFocused)
         }
     }
 
@@ -83,7 +75,7 @@ function Select (props: ISelectProps) {
     }, [value])
 
     return (
-        <div className={style.selectWrap} onClick={()=> setIsFocused(true)}>
+        <div className={style.selectWrap} onClick={isDisabled? ()=> {} : ()=> setIsFocused(!isFocused)}>
         <input
             type='text'
             id={name}
@@ -97,14 +89,12 @@ function Select (props: ISelectProps) {
             className={isError ? style.input__error : style.input}
             value={value.value}
             onChange={handleInputChange}
-            // onFocus={handleOnFocus} 
-            // onBlur={handleBlur} 
             {...rest}
         ></input>
         <Chevron 
-            isActive={isFocused} 
-            isDisabled={isDisabled} 
-            onClick={handleChevron}>
+            isActive={isFocused}  
+            handleChevron={handleChevron}
+            >
         </Chevron>
         {customDropdawn? customDropdawn :(
             <Dropdawn 
