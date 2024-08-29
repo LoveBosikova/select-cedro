@@ -7,16 +7,8 @@ import pickDropDownStyle from '../../utils/pickDropDownStyle';
 function DropDownWrap (props: IPropsDropdawn) {
     const { 
         type = TYPES.DEFAULT,
-        items,
-        value, 
         isActive, 
-        setValue, 
-        setIsFocused, 
-        setCurrentData,
-        isCustomSheetField = false,
-        CustomSheetField,
-        children,
-        ...rest } = props
+        children} = props
 
     return (
         <ul className={pickDropDownStyle(isActive, type)}>

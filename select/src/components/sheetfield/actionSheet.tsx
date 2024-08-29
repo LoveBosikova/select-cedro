@@ -1,4 +1,3 @@
-import React from 'react';
 import { Dispatch, SetStateAction } from 'react';
 
 import { ISimpleSelectItem } from '../select/select';
@@ -34,7 +33,9 @@ function ActionSheet (props: IActionSheetProps) {
         if (item) {
             setValue(item); 
         }
+
         setIsFocused(false)
+
         if (items) {
             setCurrentData(items.map((item : IActionFieldTestData) => {
                 item.isActive = (item.id === value?.id) ? true : false 

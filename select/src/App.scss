@@ -40,5 +40,10 @@ body {
     max-width: 60%;
     min-width: auto;
     margin-bottom: 5vw;
-    padding-bottom: 30vw;
+
+    &:last-of-type {
+      margin-bottom: 5vw;
+      padding-bottom: 30vw;
+
+    }
 }

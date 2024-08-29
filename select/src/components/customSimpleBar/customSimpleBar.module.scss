@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+.barWrap {
+    display: flex;
+    width: 40%;
+    min-width: fit-content;
+    max-width: fit-content;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-items: center;
+    background-color: $grey-scrollbar;
+    padding: 0.2vw 0.4vw;
+    border-radius: 10%;
+    border: 1px solid $black-border;
+    margin: 0.2vw;
+}
+
+
+.closeWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1vw;
+    height: 1vw;
+    min-width: 1vw;
+    cursor: pointer;
+    border-radius: 10%;
+    background-color: $white;
+
+}
+
+.name {
+    font-size: $font-size-15;
+    text-overflow: ellipsis;
+    color: $white;
+    white-space: nowrap;
+    margin-right: .45vw;
+    text-align: center;
+    align-self: center;
+}

@@ -32,7 +32,6 @@ function Select (props: ISelectProps) {
         maxLength = 100,
         placeholder = 'Placeholder',
         children,
-        mode,
         isCustomSheetField = false,
         customSheetField,
         ...rest

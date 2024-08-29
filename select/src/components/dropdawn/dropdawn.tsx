@@ -21,19 +21,20 @@ export interface ISelectItem {
 export interface IPropsDropdawn {
     type?: string,
     value: ISimpleSelectItem | IMultiSelectData[] | string,
+    inputValue?: string,
     items: ISimpleSelectItem[],
     isActive: boolean,
-    isCustomSheetField?: boolean,
-    // Dispatch<SetStateAction<ISimpleSelectItem | IMultiSelectData[] | IActionFieldTestData>>
     setValue: Dispatch<SetStateAction<ISimpleSelectItem | IMultiSelectData[] | SetStateAction<string> | IActionFieldTestData>>,
     setInputValue?: Dispatch<SetStateAction<string>>,
     setIsFocused: Dispatch<SetStateAction<boolean>>,
     setCurrentData: Dispatch<SetStateAction<ISimpleSelectItem[]>>,
     setSelectedItems?: React.Dispatch<React.SetStateAction<IMultiSelectData[]>>, 
+    isCustomSheetField?: boolean,
     CustomSheetField?: ReactNode | React.Component | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element },
     children?: ReactNode | ReactNode[],
     selectedItems?: IMultiSelectData[], 
-    inputValue?: string
+    isCustomTabs?: boolean, // Нужно ли отображать кастомный элемент таба - выбранного элемента. По умолчанию false
+    customTab?: ReactNode | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element } | any
 }
 
 function Dropdawn (props: IPropsDropdawn) {
@@ -49,11 +50,11 @@ function Dropdawn (props: IPropsDropdawn) {
         isCustomSheetField = false,
         CustomSheetField,
         inputValue = '',
+        isCustomTabs = false,
+        customTab,
         ...rest } = props
 
     if (!items || items.length === 0) return null
-
-    // TODO: добавить возможность кастомного дропдауна - также через children
 
     return (
         <DropDownWrap {...props}>
@@ -70,6 +71,7 @@ function Dropdawn (props: IPropsDropdawn) {
                     setCurrentData={setCurrentData} 
                     setIsFocused={setIsFocused} 
                     isCustomSheetField={isCustomSheetField}
+                    isCustomTabs={isCustomTabs}
                     items={items} 
                     inputValue={inputValue}
                     {...rest}/> 

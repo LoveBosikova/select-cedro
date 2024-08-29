@@ -25,9 +25,10 @@ function Combobox (props: ISelectProps) {
         maxLength = 100,
         placeholder = 'Placeholder',
         children,
-        mode,
         isCustomSheetField = false,
         customSheetField,
+        isCustomTabs = false,
+        customTab,
         ...rest
         } = props
 
@@ -82,10 +83,13 @@ function Combobox (props: ISelectProps) {
         setIsFocused(false)
     }, [selectedItems])
 
+    const ComponentTab = (isCustomTabs ? customTab : <></>) as React.ElementType
+
+
         return (
             <div className={style.multiselectContainer} onClick={handleIsFocus}>
                 <ul className={style.chosenItems}>
-                    {selectedItems.length > 0 ? selectedItems.map((item) => <ItemBar key={item.id} item={item} selectedItems={selectedItems} setSelectedItems={setSelectedItems}></ItemBar>) : <></>}
+                    {selectedItems.length > 0 ? selectedItems.map((item) => isCustomTabs ? <ComponentTab key={item.id} item={item} selectedItems={selectedItems} setSelectedItems={setSelectedItems} {...rest}></ComponentTab>: <ItemBar key={item.id} item={item} selectedItems={selectedItems} setSelectedItems={setSelectedItems}></ItemBar>) : <></>}
                 </ul>
                 <input
                     type='text'

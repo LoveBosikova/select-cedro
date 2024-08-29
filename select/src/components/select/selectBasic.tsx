@@ -8,6 +8,7 @@ import { IActionSheetProps } from '../sheetfield/actionSheet';
 import type { IMultiSelectData } from '../../mocks/multiselectMocks';
 
 import style from './selectBasic.module.scss'
+import { IMultiSelectSheetProps } from '../sheetfield/profileSheet';
 export interface ISelectProps {
 // Главное, что нужно сделать при создании селекта - написать его тип type = DEFAULT | ACTIONSHEET | MULTISELECT | COMBOBOX
 // В зависимости от этого компонент уже будет требовать причитающиеся ему входные данные
@@ -24,9 +25,9 @@ export interface ISelectProps {
     placeholder?: string | undefined,
     isMultiple?: boolean,
     isCustomSheetField?: boolean, // Нужно ли отображать кастомный элемент списка. По умолчанию false
-    customSheetField?: ReactNode | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element }, // Кастомный элемент списка
+    customSheetField?:ReactNode | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => Element} | any, // Кастомный элемент списка
     isCustomTabs?: boolean, // Нужно ли отображать кастомный элемент таба - выбранного элемента. По умолчанию false
-    customTab?: ReactNode | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element } // Кастомный элемент таба
+    customTab?: ReactNode | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element } | any, // Кастомный элемент таба
     children?: ReactNode | ReactNode[] 
 }
 

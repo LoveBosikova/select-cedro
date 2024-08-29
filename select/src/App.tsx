@@ -15,6 +15,7 @@ import ProfileSheet from './components/sheetfield/profileSheet';
 import ProfileBar from './components/profileBar/profileBar';
 import Combobox from './components/select/selectCombobox';
 import ComboboxSheet from './components/sheetfield/comboboxSheet';
+import CustomSimpleBar from './components/customSimpleBar/customSimpleBar';
 
 function App() {
   // Страничка для презентации всех видов селекта
@@ -102,6 +103,20 @@ function App() {
             items={simpleSelectCorrectData}
             isCustomSheetField={true}
             customSheetField={ComboboxSheet}
+            >
+            </Combobox>
+          </li>
+          <li className='combobox__item'>
+            <Combobox
+            name='Test6' 
+            type={TYPES.COMBOBOX}
+            placeholder='Выберите одну или несколько категорий' 
+            isDisabled={false} 
+            items={simpleSelectCorrectData}
+            isCustomSheetField={true}
+            customSheetField={ComboboxSheet}
+            isCustomTabs={true}
+            customTab={CustomSimpleBar}
             >
             </Combobox>
           </li>
