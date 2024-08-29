@@ -24,8 +24,7 @@ function SheetField (props: IPropsSheetField) {
         setIsFocused, 
         setCurrentData, 
         isCustomSheetField = false, 
-        items, 
-        CustomSheetField = <></>,
+        items
     } = props
 
     const handleClick = () => { 

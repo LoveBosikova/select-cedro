@@ -83,7 +83,7 @@ function Select (props: ISelectProps) {
     }, [value])
 
     return (
-        <React.Fragment>
+        <div className={style.selectWrap} onClick={()=> setIsFocused(true)}>
         <input
             type='text'
             id={name}
@@ -97,14 +97,14 @@ function Select (props: ISelectProps) {
             className={isError ? style.input__error : style.input}
             value={value.value}
             onChange={handleInputChange}
-            onFocus={handleOnFocus} 
-            onBlur={handleBlur} 
+            // onFocus={handleOnFocus} 
+            // onBlur={handleBlur} 
             {...rest}
         ></input>
         <Chevron 
             isActive={isFocused} 
             isDisabled={isDisabled} 
-            onClick={() => handleChevron(isFocused)}>
+            onClick={handleChevron}>
         </Chevron>
         {customDropdawn? customDropdawn :(
             <Dropdawn 
@@ -120,7 +120,7 @@ function Select (props: ISelectProps) {
                 {...rest}>
             </Dropdawn>
         )}
-        </React.Fragment> 
+        </div> 
     )
 }
 

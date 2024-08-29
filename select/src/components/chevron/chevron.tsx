@@ -3,7 +3,7 @@ import style from './shevron.module.scss'
 interface IPropsShevron {
     isActive: boolean,
     isDisabled: boolean,
-    onClick: () => void;
+    onClick: (state: boolean) => void;
 }
 
 // Стрелочка селекта, использует производительную свг-анимацию
@@ -15,7 +15,7 @@ function Chevron (props: IPropsShevron) {
     return (
         <svg 
         className={isActive? style.chevron__down : style.chevron__up} 
-        onClick={onClick}
+        onClick={(isActive) => onClick(isActive)}
         width="20" 
         height="20" 
         viewBox="0 0 20 20" 
