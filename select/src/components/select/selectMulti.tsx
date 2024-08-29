@@ -27,11 +27,9 @@ function Multiselect (props: ISelectProps) {
         customSheetField,
         isCustomTabs = false,
         customTab,
-        isWithPadding,
+        isWithPadding = false,
         ...rest
         } = props
-
-        console.log('padd select', isWithPadding);
 
     // Значение поисковой строки
     const [ inputValue, setInputValue] = useState<string>('')
@@ -56,7 +54,6 @@ function Multiselect (props: ISelectProps) {
 
     const handleIsFocus = () => {
         setIsFocused(true); 
-
     }
 
     const handleBlur = () => { 

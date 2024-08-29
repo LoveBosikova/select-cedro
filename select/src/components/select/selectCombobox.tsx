@@ -45,6 +45,7 @@ function Combobox (props: ISelectProps) {
     // Отслеживаем ошибки
     const [ isError, setIsError] = useState<boolean>(false)
 
+    // Храним текущае значения - с добавленными опциями
     const [ fullData, setFullData ] = useState(items)
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,9 +69,7 @@ function Combobox (props: ISelectProps) {
 
     const handleBlur = () => { 
         setIsFocused(false); 
-    }; 
-
-    console.log(isFocused);
+    };
 
     // Функция для добавления нового элемента, если ничего не нашлось по введённому inputValue
     const handleAddItem = () => {

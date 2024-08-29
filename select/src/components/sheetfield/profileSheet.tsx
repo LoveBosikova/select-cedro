@@ -49,8 +49,6 @@ function ProfileSheet (props: IMultiSelectSheetProps) {
         else setIsDisabled(false)
     }, [selectedItems])
 
-    console.log('padding', isWithPadding);
-
     return (
         <li className={style.customSheet}>
             {/* <button className={style.btn} onClick={handleClick} disabled={isDisabled}>

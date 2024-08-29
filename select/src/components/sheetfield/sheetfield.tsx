@@ -1,10 +1,10 @@
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 
-import style from './sheetfield.module.scss';
-
 import type { ISimpleSelectItem } from '../select/select';
-import { IActionFieldTestData } from '../../mocks/actionSheetMocks';
+;
 import { IMultiSelectData } from '../../mocks/multiselectMocks';
+
+import style from './sheetfield.module.scss';
 
 interface IPropsSheetField {
     value: ISimpleSelectItem,
@@ -26,7 +26,6 @@ function SheetField (props: IPropsSheetField) {
         isCustomSheetField = false, 
         items, 
         CustomSheetField = <></>,
-        ...rest
     } = props
 
     const handleClick = () => { 

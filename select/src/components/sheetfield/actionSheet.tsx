@@ -9,10 +9,10 @@ import style from './actionSheet.module.scss';
 import { IMultiSelectData } from '../../mocks/multiselectMocks';
 
 export interface IActionSheetProps {
-    item?: IActionFieldTestData,
-    items?: IActionFieldTestData[],
-    isCustomSheetField?: boolean, 
-    value?: IActionFieldTestData,
+    item?: IActionFieldTestData, // Элемент массива, который отображаем
+    items?: IActionFieldTestData[], // Все переданные элементы массива
+    isCustomSheetField?: boolean, // Есть ли кастомный элемент для отображения элемента
+    value?: IActionFieldTestData, // Элемент, который выбран в данный момент
     setValue: Dispatch<SetStateAction<ISimpleSelectItem | IMultiSelectData[] | SetStateAction<string>>>,
     setIsFocused: Dispatch<SetStateAction<boolean>>,
     setCurrentData: Dispatch<SetStateAction<IActionFieldTestData[]>>
@@ -31,10 +31,9 @@ function ActionSheet (props: IActionSheetProps) {
 
     const handleClick = () => { 
         if (item) {
-            setValue(item); 
+            if (value?.id !== item.id) setValue(item)
+            else setValue({id: undefined, value: ''}); 
         }
-
-        setIsFocused(false)
 
         if (items) {
             setCurrentData(items.map((item : IActionFieldTestData) => {
@@ -42,6 +41,8 @@ function ActionSheet (props: IActionSheetProps) {
                 return item
             }))
         }
+
+        setIsFocused(false)
     }; 
 
     return (
