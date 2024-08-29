@@ -12,7 +12,7 @@
 
 ## npm run dev 
 
-<image src="/select-cedro/select/public/pageView.png" alt="Текст с описанием картинки">
+<image src="./src/assets/select.png" alt="Текст с описанием картинки">
 ![Как выглядит демонстрация компонента](/select-cedro/select/public/pageView.png)
 
 ## Ну, а теперь - технические аспекты
