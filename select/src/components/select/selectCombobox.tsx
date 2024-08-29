@@ -3,10 +3,11 @@ import { ISelectProps } from './selectBasic';
 
 import Dropdawn from '../dropdawn/dropdawn';
 import ItemBar from '../itemBar/itemBar';
-
 import AddIcon from '../../assets/icon-plus.png'
 
 import type { IMultiSelectData } from '../../mocks/multiselectMocks';
+
+import createComboboxItem from '../../utils/createComboboxItem';
 
 import style from './selectCombobox.module.scss'
 
@@ -42,9 +43,17 @@ function Combobox (props: ISelectProps) {
     // Отслеживаем ошибки
     const [ isError, setIsError] = useState<boolean>(false)
 
+    const [ fullData, setFullData ] = useState(items)
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
         setInputValue(e.target.value)
+        const newData = items.filter((item)=> item.value.toLowerCase().includes(e.target.value.toLowerCase()))
+        if (newData.length === 0) {
+            setIsError(true)
+        } else if (newData.length > 0) {
+            setIsError(false)
+        }
     }
 
     const handleOnFocus = () => { 
@@ -59,8 +68,18 @@ function Combobox (props: ISelectProps) {
         setIsFocused(false); 
     }; 
 
+    console.log(isFocused);
+
+    // Функция для добавления нового элемента, если ничего не нашлось по введённому inputValue
+    const handleAddItem = () => {
+        const newComboboxItem = createComboboxItem(inputValue, fullData)
+        setFullData([...fullData, newComboboxItem])
+        setIsError(false)
+    }
+
     useEffect(()=> {
         console.log(`selections updated:`, selectedItems);
+        setIsFocused(false)
     }, [selectedItems])
 
         return (
@@ -78,7 +97,7 @@ function Combobox (props: ISelectProps) {
                     disabled={isDisabled}
                     minLength={minLength? minLength : isRequired? 1: 0}
                     maxLength={maxLength}
-                    className={isError ? style.input__error : style.input}
+                    className={style.input}
                     value={inputValue}
                     onChange={handleInputChange}
                     onFocus={handleOnFocus} 
@@ -89,7 +108,7 @@ function Combobox (props: ISelectProps) {
                     <Dropdawn 
                         type={type}
                         value={inputValue}
-                        items={items} 
+                        items={fullData} 
                         isActive={isFocused} 
                         setIsFocused={setIsFocused} 
                         inputValue={inputValue}
@@ -102,7 +121,7 @@ function Combobox (props: ISelectProps) {
                     </Dropdawn>)}
 
                     {isError ? <div className={style.addItem}>
-                        <button className={style.addBtn}>
+                        <button className={style.addBtn} onClick={handleAddItem}>
                             <picture className={style.plusWrap}>
                                 <img src={AddIcon} alt='Plus Icon' tabIndex={0}/>
                             </picture>

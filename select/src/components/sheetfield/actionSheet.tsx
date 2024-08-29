@@ -44,7 +44,6 @@ function ActionSheet (props: IActionSheetProps) {
     }; 
 
     return (
-    <React.Fragment>
     <li className={style.customSheet} onClick={handleClick}>
         <picture className={style.lettersWrap}>
             <img className={style.letters} src={item?.src} alt={item?.value} />
@@ -57,7 +56,6 @@ function ActionSheet (props: IActionSheetProps) {
             <img className={style.box} src={IconBox} alt='Icon Box' />
         </picture>
     </li>
-    </React.Fragment>
     )
 }
 

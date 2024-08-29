@@ -7,12 +7,12 @@
     position: relative;
     outline:none;
     max-width: 44vw;
-    min-width: 24vw;
+    min-width: 24.8vw;
     width: auto;
     background-color: $white;
     border-radius: 8px;
     border: 1px solid $black-border;
-    padding: 0.8vw 0.5vw;
+    padding: 0.8vw 0.8vw;
     will-change: border, box-shadow;
     transition: all 250ms ease-in;
     z-index: 1;
@@ -42,12 +42,11 @@
 
 .chosenItems {
     width: auto;
-    max-width: 44vw;
-    min-width: fit-content;
+    max-width: 34vw;
     display: flex;
     flex-wrap: wrap;
 }
 
 .searchIconWrap {
-    margin-right: 0.3vw;
+    margin-right: 1.2vw;
 }

@@ -61,6 +61,7 @@ function Multiselect (props: ISelectProps) {
 
     useEffect(()=> {
         console.log(`selections updated:`, selectedItems);
+        setIsFocused(false); 
     }, [selectedItems])
 
         return (

@@ -35,7 +35,6 @@ function ComboboxSheet (props: IMultiSelectSheetProps) {
         setSelectedItems([...selectedItems, item])
         setInputValue(''); 
         setIsDisabled(!isDisabled)
-        setIsFocused(false)
     }
 
     useEffect(()=> {
@@ -44,15 +43,13 @@ function ComboboxSheet (props: IMultiSelectSheetProps) {
     }, [selectedItems])
 
     return (
-        <React.Fragment>
-        <li className={style.customSheet}>
-            <button className={style.btn} onClick={handleClick} disabled={isDisabled}>
+        <li className={style.customSheet} onClick={handleClick}>
+            <button className={style.btn} disabled={isDisabled}>
             <div className={style.textWrap}>
                 <h3 className={isDisabled? style.value__disabled : style.value}>{item?.value}</h3>
             </div>
             </button>
         </li>
-        </React.Fragment>
         )
 }
 
