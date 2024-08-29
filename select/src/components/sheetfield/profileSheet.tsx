@@ -16,7 +16,8 @@ export interface IMultiSelectSheetProps {
     selectedItems?: IMultiSelectData[],
     setSelectedItems: React.Dispatch<React.SetStateAction<IMultiSelectData[]>>,
     isPadding: boolean,
-    inputValue: string
+    inputValue: string,
+    isWithPadding: boolean
 }
 
 function ProfileSheet (props: IMultiSelectSheetProps) {
@@ -27,7 +28,8 @@ function ProfileSheet (props: IMultiSelectSheetProps) {
         setInputValue, 
         setIsFocused, 
         selectedItems = [],
-        setSelectedItems
+        setSelectedItems,
+        isWithPadding
     } = props; 
 
     if (!item.value.includes(inputValue)) return <></>
@@ -35,7 +37,8 @@ function ProfileSheet (props: IMultiSelectSheetProps) {
     const [ isDisabled , setIsDisabled ] = useState(false);
 
     function handleClick () {
-        setSelectedItems([...selectedItems, item])
+        if (!selectedItems.find(el => el.id === item.id)) setSelectedItems([...selectedItems, item])
+        else setSelectedItems(selectedItems.filter((el) => el.id !== item.id))
         setInputValue(''); 
         setIsDisabled(!isDisabled)
         setIsFocused(false)
@@ -46,10 +49,13 @@ function ProfileSheet (props: IMultiSelectSheetProps) {
         else setIsDisabled(false)
     }, [selectedItems])
 
+    console.log('padding', isWithPadding);
+
     return (
-        <React.Fragment>
         <li className={style.customSheet}>
-            <button className={style.btn} onClick={handleClick} disabled={isDisabled}>
+            {/* <button className={style.btn} onClick={handleClick} disabled={isDisabled}>
+             */}
+            <button className={isWithPadding ? style.btn__withPadding : style.btn} onClick={handleClick}>
             <picture className={isDisabled? style.lettersWrap__disabled : style.lettersWrap}>
                 <img className={style.letters} src={item?.src} alt={item?.value} />
             </picture>
@@ -62,7 +68,6 @@ function ProfileSheet (props: IMultiSelectSheetProps) {
             </picture>
             </button>
         </li>
-        </React.Fragment>
         )
 }
 

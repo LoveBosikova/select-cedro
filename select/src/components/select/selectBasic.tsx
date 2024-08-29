@@ -28,6 +28,7 @@ export interface ISelectProps {
     customSheetField?:ReactNode | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => Element} | any, // Кастомный элемент списка
     isCustomTabs?: boolean, // Нужно ли отображать кастомный элемент таба - выбранного элемента. По умолчанию false
     customTab?: ReactNode | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element } | any, // Кастомный элемент таба
+    isWithPadding?: boolean,
     children?: ReactNode | ReactNode[] 
 }
 

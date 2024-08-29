@@ -29,6 +29,7 @@ function Combobox (props: ISelectProps) {
         customSheetField,
         isCustomTabs = false,
         customTab,
+        isWithPadding = false,
         ...rest
         } = props
 
@@ -120,6 +121,7 @@ function Combobox (props: ISelectProps) {
                         CustomSheetField={customSheetField}
                         selectedItems={selectedItems}
                         setSelectedItems={setSelectedItems}
+                        isWithPadding={isWithPadding}
                         {...rest}>
                     </Dropdawn>)}
 

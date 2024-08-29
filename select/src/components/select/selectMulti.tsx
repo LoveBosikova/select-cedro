@@ -27,8 +27,11 @@ function Multiselect (props: ISelectProps) {
         customSheetField,
         isCustomTabs = false,
         customTab,
+        isWithPadding,
         ...rest
         } = props
+
+        console.log('padd select', isWithPadding);
 
     // Значение поисковой строки
     const [ inputValue, setInputValue] = useState<string>('')
@@ -106,6 +109,7 @@ function Multiselect (props: ISelectProps) {
                         CustomSheetField={customSheetField}
                         selectedItems={selectedItems}
                         setSelectedItems={setSelectedItems}
+                        isWithPadding={isWithPadding}
                         {...rest}>
                     </Dropdawn>)}
             </div>

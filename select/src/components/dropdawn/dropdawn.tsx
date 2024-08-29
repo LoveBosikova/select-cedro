@@ -34,7 +34,8 @@ export interface IPropsDropdawn {
     children?: ReactNode | ReactNode[],
     selectedItems?: IMultiSelectData[], 
     isCustomTabs?: boolean, // Нужно ли отображать кастомный элемент таба - выбранного элемента. По умолчанию false
-    customTab?: ReactNode | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element } | any
+    customTab?: ReactNode | Element | ReactElement<any, any> | JSX.Element | { key: string; component: (props: IActionSheetProps) => JSX.Element } | any,
+    isWithPadding?: boolean
 }
 
 function Dropdawn (props: IPropsDropdawn) {
@@ -50,8 +51,9 @@ function Dropdawn (props: IPropsDropdawn) {
         isCustomSheetField = false,
         CustomSheetField,
         inputValue = '',
-        isCustomTabs = false,
+        isCustomTabs,
         customTab,
+        isWithPadding = false,
         ...rest } = props
 
     if (!items || items.length === 0) return null
@@ -74,6 +76,7 @@ function Dropdawn (props: IPropsDropdawn) {
                     isCustomTabs={isCustomTabs}
                     items={items} 
                     inputValue={inputValue}
+                    isWithPadding={isWithPadding}
                     {...rest}/> 
                     : 
                     <SheetField

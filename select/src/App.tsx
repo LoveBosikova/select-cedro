@@ -87,6 +87,20 @@ function App() {
               items={multiSelectCorrectData}
               isCustomSheetField={true}
               customSheetField={ProfileSheet}
+              isWithPadding={false}
+              >
+            </Multiselect>
+          </li>
+          <li className='multiselect__item'>
+            <Multiselect 
+              name='Test5' 
+              type={TYPES.MULTISELECT}
+              placeholder='Placeholder' 
+              isDisabled={false} 
+              items={multiSelectCorrectData}
+              isCustomSheetField={true}
+              customSheetField={ProfileSheet}
+              isWithPadding={true}
               >
             </Multiselect>
           </li>
